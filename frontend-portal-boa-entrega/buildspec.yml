@@ -10,6 +10,7 @@ phases:
         runtime-versions:
           nodejs: 14
         commands:
+            - cd frontend-portal-boa-entrega
             - npm update -g
             - npm install --save-dev @angular-devkit/build-angular
             - npm install
