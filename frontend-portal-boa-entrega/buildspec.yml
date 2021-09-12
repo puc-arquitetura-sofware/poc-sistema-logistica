@@ -11,6 +11,7 @@ phases:
           nodejs: 14
         commands:
             - npm update -g
+            - npm install --save-dev @angular-devkit/build-angular
             - npm install
             - npm install -g @angular/cli
             - ng update @angular/cli
