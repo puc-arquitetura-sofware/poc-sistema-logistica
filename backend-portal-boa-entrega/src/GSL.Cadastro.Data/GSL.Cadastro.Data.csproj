@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\GSL.Cadastro.Dominio\GSL.Cadastro.Dominio.csproj" />
+    <ProjectReference Include="..\GSL.Cadastro.SharedKernel\GSL.Cadastro.SharedKernel.csproj" />
+  </ItemGroup>
+
+</Project>

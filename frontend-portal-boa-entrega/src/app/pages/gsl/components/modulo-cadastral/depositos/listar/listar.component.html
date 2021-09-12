@@ -1,0 +1,37 @@
+<div class="container main-container">
+
+    <h1>Lista de Depositos</h1>
+
+    <p>
+        <a class="btn btn-warning text-white" [routerLink]="['/gsl/modulo-gestao-servicos-logistica/modulo-cadastral/depositos/adicionar-novo']">Novo Deposito</a>
+    </p>
+
+    <table class="table table-hover">
+        <thead class="thead-dark">
+            <tr>
+                <th>Tipo</th>
+                <th>Endereco</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tr *ngFor="let deposito of depositos">
+            <td>
+                {{ deposito.tipo }}
+            </td>
+            <td>
+                {{ deposito.enderecoDeposito.logradouro}}, {{ deposito.enderecoDeposito.numero}}, {{ deposito.enderecoDeposito.bairro}}, {{ deposito.enderecoDeposito.cidade}} - {{ deposito.enderecoDeposito.estado}}
+            </td>
+            <td class="text-right">
+                <a class="btn btn-info" [routerLink]="['/gsl/modulo-gestao-servicos-logistica/modulo-cadastral/depositos/detalhes',deposito.id]">
+                    <span class="fa fa-search"></span>
+                </a>&nbsp;
+                <a class="btn btn-warning" [routerLink]="['/gsl/modulo-gestao-servicos-logistica/modulo-cadastral/depositos/editar',deposito.id]">
+                    <span class="fa fa-pencil-alt"></span>
+                </a>&nbsp;
+                <a class="btn btn-danger" [routerLink]="['/gsl/modulo-gestao-servicos-logistica/modulo-cadastral/depositos/excluir',deposito.id]">
+                    <span class="fa fa-trash"></span>
+                </a>
+            </td>
+        </tr>
+    </table>
+</div>

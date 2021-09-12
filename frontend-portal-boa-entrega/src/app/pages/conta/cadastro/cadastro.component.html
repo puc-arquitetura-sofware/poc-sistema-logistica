@@ -1,0 +1,213 @@
+<div class="container main-container">
+    <h1>Cadastro</h1>
+
+    <form novalidate (ngSubmit)="adicionarConta()" [formGroup]="cadastroForm">
+
+        <h4>Crie sua conta</h4>
+        <hr>
+
+        <div class="alert alert-danger" *ngIf="errors.length > 0">
+            <h3 id="msgRetorno">Opa! Alguma coisa não deu certo:</h3>
+            <ul>
+                <li *ngFor="let error of errors">{{ error }}</li>
+            </ul>
+        </div>
+
+        <div class="form-group">
+            <label class="col-md-2 col-md-2 control-label">E-mail</label>
+            <div class="col-md-10">
+                <input class="form-control" id="email" type="text" placeholder="E-mail (requerido)" formControlName="email" [ngClass]="{'is-invalid': displayMessage.email }" />
+                <span class="text-danger" *ngIf="displayMessage.email">
+                                <p [innerHTML]="displayMessage.email"></p>
+                            </span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-md-2 col-md-2 control-label">Senha</label>
+            <div class="col-md-10">
+                <input class="form-control" id="password" type="password" placeholder="Senha (requerido)" formControlName="password" [ngClass]="{'is-invalid': displayMessage.password }" />
+                <span class="text-danger" *ngIf="displayMessage.password">
+                                <p [innerHTML]="displayMessage.password"></p>
+                            </span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-md-2 col-md-2 control-label">Confirme a Senha</label>
+            <div class="col-md-10">
+                <input class="form-control" id="confirmPassword" type="password" placeholder="Confirme a Senha (requerido)" formControlName="confirmPassword" [ngClass]="{'is-invalid': displayMessage.confirmPassword }" />
+                <span class="text-danger" *ngIf="displayMessage.confirmPassword">
+                                <p [innerHTML]="displayMessage.confirmPassword"></p>
+                            </span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-md-2 control-label">Nome</label>
+            <div class="col-md-10">
+                <input class="form-control" id="nome" type="text" placeholder="Nome (requerido)" formControlName="nome" [ngClass]="{'is-invalid': displayMessage.nome }" />
+                <span class="text-danger" *ngIf="displayMessage.nome">
+                    <p [innerHTML]="displayMessage.nome"></p>
+                </span>
+            </div>
+        </div>
+
+        
+        <div class="form-group">
+            <div class="form-group">
+                <label class="col-md-2 control-label">Perfil</label>
+                <div class="col-md-10">
+                    <select 
+                        
+                        class="form-control" 
+                        id="perfil" 
+                        formControlName="perfil" 
+                        (change)="trocarValidacaoDocumento()"
+                        [ngClass]="{ 'is-invalid': displayMessage.perfil }"
+                        >
+                        <option value="">Selecione um perfil</option>
+                        <option *ngFor="let perfil of perfis" [value]="perfil.id">{{ perfil.descricao }}</option>
+                    </select>
+                    <span class="text-danger" *ngIf="displayMessage.perfil">
+                    <p [innerHTML]="displayMessage.perfil"></p>
+                </span>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-md-2 col-md-2 control-label">Documento</label>
+            <div class="col-md-10">
+                <input class="form-control" id="cpfCnpj" type="text" placeholder="{{ textoDocumento }}" formControlName="cpfCnpj" [textMask]="perfilForm().value === idPerfilCliente ? {mask: MASKS.cpf.textMask} : {mask: MASKS.cnpj.textMask}" [ngClass]="{'is-invalid': displayMessage.cpfCnpj }"
+                />
+
+                <span class="text-danger" *ngIf="displayMessage.cpfCnpj">
+                    <p [innerHTML]="displayMessage.cpfCnpj"></p>
+                </span>
+            </div>
+        </div>
+
+
+        <div class="col-md-2 form-group form-check">
+            <div class="col-md-10">
+                <label class="form-check-label">
+                    <input class="form-check-input" type="checkbox" id="ativo" formControlName="ativo" name="ativo" value="true"> Ativo?
+                </label>
+            </div>
+        </div>
+
+        <h4>Endereço</h4>
+        <hr>
+        <div formGroupName="endereco">
+            <div class="form-group">
+                <label class="col-md-2 col-md-2 control-label">CEP</label>
+                <div class="col-md-10">
+                    <input class="form-control" id="cep" type="text" placeholder="CEP (requerido)" (blur)="buscarCep($event.target.value)" formControlName="cep" cep [textMask]="{mask: MASKS.cep.textMask}" [ngClass]="{ 'is-invalid': displayMessage.cep }" />
+                    <span class="text-danger" *ngIf="displayMessage.cep">
+                    <p [innerHTML]="displayMessage.cep"></p>
+                </span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 control-label">Logradouro</label>
+                <div class="col-md-10">
+                    <input class="form-control" id="logradouro" type="text" placeholder="Logradouro (requerido)" formControlName="logradouro" [ngClass]="{ 'is-invalid': displayMessage.logradouro }" />
+                    <span class="text-danger" *ngIf="displayMessage.logradouro">
+                    <p [innerHTML]="displayMessage.logradouro"></p>
+                </span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 control-label">Número</label>
+                <div class="col-md-10">
+                    <input class="form-control" id="numero" type="text" placeholder="Número (requerido)" formControlName="numero" [ngClass]="{ 'is-invalid': displayMessage.numero }" />
+                    <span class="text-danger" *ngIf="displayMessage.numero">
+                    <p [innerHTML]="displayMessage.numero"></p>
+                </span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 control-label">Complemento</label>
+                <div class="col-md-10">
+                    <input class="form-control" id="complemento" type="text" placeholder="Complemento" formControlName="complemento" [ngClass]="{ 'is-invalid': displayMessage.complemento }" />
+                    <span class="text-danger" *ngIf="displayMessage.complemento">
+                    <p [innerHTML]="displayMessage.complemento"></p>
+                </span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 control-label">Bairro</label>
+                <div class="col-md-10">
+                    <input class="form-control" id="bairro" type="text" placeholder="Bairro (requerido)" formControlName="bairro" [ngClass]="{ 'is-invalid': displayMessage.bairro }" />
+                    <span class="text-danger" *ngIf="displayMessage.bairro">
+                    <p [innerHTML]="displayMessage.bairro"></p>
+                </span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 control-label">Cidade</label>
+                <div class="col-md-10">
+                    <input class="form-control" id="cidade" type="text" placeholder="Cidade (requerido)" formControlName="cidade" [ngClass]="{ 'is-invalid': displayMessage.cidade }" />
+                    <span class="text-danger" *ngIf="displayMessage.cidade">
+                    <p [innerHTML]="displayMessage.cidade"></p>
+                </span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 control-label">Estado</label>
+                <div class="col-md-10">
+                    <select class="form-control" id="estado" formControlName="estado" [ngClass]="{ 'is-invalid': displayMessage.estado }">
+                        <option value="">Estado</option>
+                        <option value="AC">Acre</option>
+                        <option value="AL">Alagoas</option>
+                        <option value="AP">Amapá</option>
+                        <option value="AM">Amazonas</option>
+                        <option value="BA">Bahia</option>
+                        <option value="CE">Ceará</option>
+                        <option value="DF">Distrito Federal</option>
+                        <option value="ES">Espírito Santo</option>
+                        <option value="GO">Goiás</option>
+                        <option value="MA">Maranhão</option>
+                        <option value="MT">Mato Grosso</option>
+                        <option value="MS">Mato Grosso do Sul</option>
+                        <option value="MG">Minas Gerais</option>
+                        <option value="PA">Pará</option>
+                        <option value="PB">Paraíba</option>
+                        <option value="PR">Paraná</option>
+                        <option value="PE">Pernambuco</option>
+                        <option value="PI">Piauí</option>
+                        <option value="RJ">Rio de Janeiro</option>
+                        <option value="RN">Rio Grande do Norte</option>
+                        <option value="RS">Rio Grande do Sul</option>
+                        <option value="RO">Rondônia</option>
+                        <option value="RR">Roraima</option>
+                        <option value="SC">Santa Catarina</option>
+                        <option value="SP">São Paulo</option>
+                        <option value="SE">Sergipe</option>
+                        <option value="TO">Tocantins</option>
+                      </select>
+                    <span class="text-danger" *ngIf="displayMessage.estado">
+                    <p [innerHTML]="displayMessage.estado"></p>
+                </span>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <div class="col-md-4 col-md-offset-2">
+                <span><button class="btn btn-success" id="Registrar" [disabled]="!cadastroForm.valid" type="submit">Registrar</button></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-4 col-md-offset-2">
+                <p>Formulario valido: {{ cadastroForm.valid }}</p>
+                <p>Formulario Tocado: {{ cadastroForm.touched }}</p>
+                <p>Formulario Sujo: {{ cadastroForm.dirty }}</p><br>
+                <p>Formulario: {{ formResult }}</p>
+            </div>
+        </div>
+    </form>
+</div>

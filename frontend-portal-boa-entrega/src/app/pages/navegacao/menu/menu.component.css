@@ -1,0 +1,52 @@
+
+.menu > ul > li{
+    border-radius: 30px;
+    opacity: 0.9;
+}
+
+.menu > ul > li:nth-child(1):hover  {
+    background-color: #6c757d;
+}
+
+.menu > ul > li:nth-child(2):hover  {
+    background-color: #28a745;
+}
+
+.menu > ul > li:nth-child(3):hover  {
+    background-color: #dc3545;
+}
+
+.menu > ul > li:nth-child(4):hover  {
+    background-color: #17a2b8;
+}
+
+.menu > ul > li:nth-child(5):hover  {
+    background-color: #ffc107;
+}
+
+
+.menu > ul > li:nth-child(1).active  {
+    background-color: #6c757d;
+
+}
+
+.menu > ul > li:nth-child(2).active  {
+    background-color: #28a745;
+}
+
+.menu > ul > li:nth-child(3).active {
+    background-color: #dc3545;
+}
+
+.menu > ul > li:nth-child(4).active {
+    background-color: #17a2b8;
+}
+
+.menu > ul > li:nth-child(5).active {
+    background-color: #ffc107;
+}
+
+.menu > ul > li.active > a {
+    color: white !important;
+    
+}
