@@ -3,7 +3,7 @@ env:
     variables:
         CACHE_CONTROL: "86400"
         S3_BUCKET: frontend-portal-boa-entrega
-        BUILD_FOLDER: frontend
+        BUILD_FOLDER: dist/boa-entrega-portal
         BUILD_ENV: "prod"
 phases:
     install:
