@@ -14,6 +14,11 @@ const routes: Routes = [{
         path: 'depositos',
         loadChildren: () => import('./depositos/depositos.module')
           .then(m => m.DepositosModule)
+      },
+      {
+        path: 'mercadorias',
+        loadChildren: () => import('./mercadorias/mercadoria.module')
+          .then(m => m.MercadoriaModule)
       }
   ]
 }];

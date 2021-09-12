@@ -1,0 +1,57 @@
+<div class="container main-container">
+    <h4>Detalhe {{ mercadoria.nome }} </h4>
+    <br>
+    <h5>Informações somente para leitura</h5>
+
+    <div class="row">
+        <!-- <div class="col-md-4">
+            <img src="{{ imagens }}{{ mercadoria.imagem }}" style="width: 300px; height: 428px">
+        </div> -->
+        <div class="col-md-6">
+            <dl>
+                <!-- <dt>
+                    Fornecedor
+                </dt>
+                <dd>
+                    {{ mercadoria.nomeFornecedor }}
+                </dd> -->
+                <dt>
+                    Nome
+                </dt>
+                <dd>
+                    {{ mercadoria.nome }}
+                </dd>
+                <dt>
+                    Descrição
+                </dt>
+                <dd>
+                    {{ mercadoria.descricao }}
+                </dd>
+                <dt>
+                    Valor
+                </dt>
+                <dd>
+                    {{ mercadoria.valor | currencyBrazil }}
+                </dd>
+                <dt>
+                    DataCadastro
+                </dt>
+                <dd>
+                    {{ mercadoria.dataCadastro | date:'dd/MM/yyyy' }}
+                </dd>
+                <dt>
+                    Ativo?
+                </dt>
+                <dd>
+                    <input [checked]="mercadoria.ativo" class="check-box" disabled="disabled" type="checkbox">
+                </dd>
+            </dl>
+
+            <div>
+                <a class="btn btn-warning" [routerLink]="['/gsl/modulo-gestao-servicos-logistica/modulo-cadastral/mercadorias/editar',mercadoria.id]">Editar</a>&nbsp;
+                <a class="btn btn-info" href="javascript:window.history.back();">Voltar</a>
+            </div>
+        </div>
+    </div>
+
+</div>

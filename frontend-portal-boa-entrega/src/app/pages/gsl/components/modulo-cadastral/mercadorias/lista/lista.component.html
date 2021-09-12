@@ -1,0 +1,62 @@
+<div class="container main-container">
+
+    <h1>Lista de Mercadorias</h1>
+    <hr>
+
+    <p>
+        <a class="btn btn-info" [routerLink]="['/gsl/modulo-gestao-servicos-logistica/modulo-cadastral/mercadorias/adicionar-novo']">Nova Mercadoria</a>
+    </p>
+
+    <table class="table table-hover">
+        <thead class="thead-dark">
+            <tr>
+                <!-- <th>
+
+                </th> -->
+                <th>
+                    Nome
+                </th>
+                <!-- <th>
+                    Fornecedor
+                </th> -->
+                <th>
+                    Valor
+                </th>
+                <th>
+                    Ativo?
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let mercadoria of mercadorias">
+                <!-- <td>
+                    <img src="{{ imagens }}{{ mercadoria.imagem }}" style="width: 70px; height: 100px">
+                </td> -->
+                <td>
+                    {{ mercadoria.nome }}
+                </td>
+                <!-- <td>
+                    {{ mercadoria.nomeFornecedor }}
+                </td> -->
+                <td>
+                    {{ mercadoria.valor | currencyBrazil }}
+                </td>
+                <td>
+                    <input [checked]="mercadoria.ativo" class="check-box" disabled="disabled" type="checkbox">
+                </td>
+                <td class="text-right">
+                    <a class="btn btn-warning" [routerLink]="['/gsl/modulo-gestao-servicos-logistica/modulo-cadastral/mercadorias/detalhes',mercadoria.id]">
+                        <span class="fa fa-search"></span>
+                    </a>&nbsp;
+                    <a class="btn btn-info" [routerLink]="['/gsl/modulo-gestao-servicos-logistica/modulo-cadastral/mercadorias/editar',mercadoria.id]">
+                        <span class="fa fa-pencil-alt"></span>
+                    </a>&nbsp;
+                    <a class="btn btn-danger" [routerLink]="['/gsl/modulo-gestao-servicos-logistica/modulo-cadastral/mercadorias/excluir',mercadoria.id]">
+                        <span class="fa fa-trash"></span>
+                    </a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

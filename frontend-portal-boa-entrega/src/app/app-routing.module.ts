@@ -32,9 +32,9 @@ const routes: Routes = [
       .then(m => m.GslModule)
   },
   // {
-  //   path: 'produtos',
-  //   loadChildren: () => import('./produto/produto.module')
-  //     .then(m => m.ProdutoModule)
+  //   path: 'mercadorias',
+  //   loadChildren: () => import('./mercadoria/mercadoria.module')
+  //     .then(m => m.MercadoriaModule)
   // },
   { path: 'acesso-negado', component: AcessoNegadoComponent },
   { path: 'nao-encontrado', component: NotFoundComponent },

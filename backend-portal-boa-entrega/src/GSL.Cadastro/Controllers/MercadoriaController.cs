@@ -64,7 +64,7 @@ namespace GSL.Cadastro.Api.Controllers
         }
 
 
-        [HttpGet(":id")]
+        [HttpGet("id")]
         [ProducesResponseType(typeof(MercadoriaViewModel), (int)HttpStatusCode.OK)]
         [ProducesResponseType((int)HttpStatusCode.NotFound)]
         [ProducesResponseType((int)HttpStatusCode.BadRequest)]
@@ -90,7 +90,7 @@ namespace GSL.Cadastro.Api.Controllers
             return CustomResponse(MapperUtil.MapperMercadoriaToMercadoriaViewModel(mercadoria));
         }
 
-        [HttpPut(":id")]
+        [HttpPut("id")]
         [ProducesResponseType(typeof(MercadoriaViewModel), (int)HttpStatusCode.OK)]
         [ProducesResponseType((int)HttpStatusCode.NotFound)]
         [ProducesResponseType((int)HttpStatusCode.BadRequest)]
@@ -109,7 +109,7 @@ namespace GSL.Cadastro.Api.Controllers
         }
 
 
-        [HttpPost(":mercadoriaId/:depositoId")]
+        [HttpPost("mercadoriaId/depositoId")]
         [ProducesResponseType(typeof(MercadoriaDepositoViewModel), (int)HttpStatusCode.OK)]
         [ProducesResponseType((int)HttpStatusCode.NotFound)]
         [ProducesResponseType((int)HttpStatusCode.BadRequest)]
@@ -139,7 +139,7 @@ namespace GSL.Cadastro.Api.Controllers
         }
 
 
-        [HttpPost(":mercadoriaId/:fornecedorId")]
+        [HttpPost("mercadoriaId/fornecedorId")]
         [ProducesResponseType(typeof(MercadoriaFornecedorViewModel), (int)HttpStatusCode.OK)]
         [ProducesResponseType((int)HttpStatusCode.NotFound)]
         [ProducesResponseType((int)HttpStatusCode.BadRequest)]
@@ -168,7 +168,7 @@ namespace GSL.Cadastro.Api.Controllers
             return CustomResponse(new MercadoriaFornecedorViewModel(mercadoriViewModel, fornecedorViewModel));
         }
 
-        [HttpPost(":mercadoriaId/:clienteId")]
+        [HttpPost("mercadoriaId/clienteId")]
         [ProducesResponseType(typeof(MercadoriaClienteViewModel), (int)HttpStatusCode.OK)]
         [ProducesResponseType((int)HttpStatusCode.NotFound)]
         [ProducesResponseType((int)HttpStatusCode.BadRequest)]
