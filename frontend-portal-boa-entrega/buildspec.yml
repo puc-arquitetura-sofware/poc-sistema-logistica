@@ -14,8 +14,7 @@ phases:
             - npm install --save-dev @angular-devkit/build-angular
             - npm install
             - npm install -g @angular/cli
-            - ng update @angular/cli
-            - ng update @angular/core
+            - npm install -g @angular/core
     build:
         commands:
             - echo Build started on `date`
