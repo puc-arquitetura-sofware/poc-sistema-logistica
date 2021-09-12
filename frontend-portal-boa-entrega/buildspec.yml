@@ -7,9 +7,9 @@ env:
         BUILD_ENV: "prod"
 phases:
     install:
-        commands:
-            - echo Installing source NPM dependencies...
-            - npm install
+    runtime-versions:
+      nodejs: 8
+    commands:
             - npm install -g @angular/cli
             - ng update @angular/cli
             - ng update @angular/core
