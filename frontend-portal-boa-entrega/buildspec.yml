@@ -11,9 +11,8 @@ phases:
           nodejs: 14
         commands:
             - cd frontend-portal-boa-entrega
-            - npm update -g
-            - npm install --save-dev @angular-devkit/build-angular
             - npm install
+            - npm install --save-dev @angular-devkit/build-angular
             - npm install -g @angular/cli
             - npm install -g @angular/core
     build:
