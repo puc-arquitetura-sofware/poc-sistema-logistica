@@ -1,0 +1,30 @@
+version: 0.2
+env:
+    variables:
+        CACHE_CONTROL: "86400"
+        S3_BUCKET: frontend-portal-boa-entrega
+        BUILD_FOLDER: dist/boa-entrega-portal
+        BUILD_ENV: "prod"
+phases:
+    install:
+        runtime-versions:
+          nodejs: 8
+        commands:
+            - npm install -g @angular/cli
+            - ng update @angular/cli
+            - ng update @angular/core
+            - ng update
+            - ng update @angular/cli --from=1.7.4 --migrate-only
+    build:
+        commands:
+            - echo Build started on `date`
+            - ng build
+    post_build:
+         commands:
+            - aws s3 cp ${BUILD_FOLDER} s3://${S3_BUCKET} --recursive --acl public-read --cache-control "max-age=${CACHE_CONTROL}"
+            - echo Build completed on `date`
+artifacts:
+    files:
+        - '**/*'
+    base-directory: 'dist*'
+    discard-paths: yes
