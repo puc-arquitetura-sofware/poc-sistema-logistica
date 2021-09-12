@@ -8,13 +8,13 @@ env:
 phases:
     install:
         runtime-versions:
-          nodejs: 8
+          nodejs: 14
         commands:
+            - cd frontend-portal-boa-entrega
+            - npm install
+            - npm install --save-dev @angular-devkit/build-angular
             - npm install -g @angular/cli
-            - ng update @angular/cli
-            - ng update @angular/core
-            - ng update
-            - ng update @angular/cli --from=1.7.4 --migrate-only
+            - npm install -g @angular/core
     build:
         commands:
             - echo Build started on `date`
