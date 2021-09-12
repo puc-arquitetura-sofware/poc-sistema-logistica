@@ -11,6 +11,10 @@ phases:
             - echo Installing source NPM dependencies...
             - npm install
             - npm install -g @angular/cli
+            - ng update @angular/cli
+            - ng update @angular/core
+            - ng update
+            - ng update @angular/cli --from=1.7.4 --migrate-only
     build:
         commands:
             - echo Build started on `date`
