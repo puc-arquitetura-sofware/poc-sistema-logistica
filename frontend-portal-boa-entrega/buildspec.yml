@@ -12,7 +12,6 @@ phases:
         commands:
             - cd frontend-portal-boa-entrega
             - npm install
-            - npm install --save-dev @angular-devkit/build-angular
             - npm install -g @angular/cli
             - npm install -g @angular/core
     build:
