@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Resolve, ActivatedRouteSnapshot } from '@angular/router';
-import { Deposito } from '../models/Deposito';
+import { Deposito } from '../models/deposito';
 import { DepositoService } from './deposito.service';
 
 @Injectable()

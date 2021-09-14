@@ -108,6 +108,23 @@ namespace GSL.Cadastro.Api.Controllers
             return CustomResponse(MapperUtil.MapperMercadoriaToMercadoriaViewModel(deposito));
         }
 
+        [HttpDelete("id")]
+        [ProducesResponseType(typeof(MercadoriaViewModel), (int)HttpStatusCode.OK)]
+        [ProducesResponseType((int)HttpStatusCode.NotFound)]
+        [ProducesResponseType((int)HttpStatusCode.BadRequest)]
+        [ProducesResponseType((int)HttpStatusCode.Unauthorized)]
+        [ProducesResponseType((int)HttpStatusCode.Forbidden)]
+        public async Task<IActionResult> Deletar([FromQuery] Guid id)
+        {
+            var depositoExist = await _mercadoriaRepository.ObterPorIdAsync(id);
+
+            if (depositoExist == null)
+                throw new NullReferenceException($"a propriedade { nameof(id) } deve ser informada");
+
+            await _mercadoriaRepository.RemoverAsync(depositoExist);
+            return CustomResponse(MapperUtil.MapperMercadoriaToMercadoriaViewModel(depositoExist));
+        }
+
 
         [HttpPost("mercadoriaId/depositoId")]
         [ProducesResponseType(typeof(MercadoriaDepositoViewModel), (int)HttpStatusCode.OK)]

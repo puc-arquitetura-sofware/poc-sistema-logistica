@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { Deposito } from '../models/Deposito';
+import { Deposito } from '../models/deposito';
 import { DepositoService } from '../services/deposito.service';
 
 @Component({

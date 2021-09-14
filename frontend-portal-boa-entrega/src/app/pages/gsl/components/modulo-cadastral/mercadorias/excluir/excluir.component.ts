@@ -37,7 +37,7 @@ export class ExcluirComponent  {
     const toast = this.toastr.success('Mercadoria excluido com Sucesso!', 'Good bye :D');
     if (toast) {
       toast.onHidden.subscribe(() => {
-        this.router.navigate(['/mercadorias/listar-todos']);
+        this.router.navigate(['/gsl/modulo-gestao-servicos-logistica/modulo-cadastral/mercadorias/listar-todos']);
       });
     }
   }

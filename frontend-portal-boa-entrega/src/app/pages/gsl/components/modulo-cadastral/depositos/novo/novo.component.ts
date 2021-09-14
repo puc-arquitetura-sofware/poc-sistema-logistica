@@ -1,7 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChildren } from '@angular/core';
 import { FormBuilder, FormControlName, FormGroup, Validators } from '@angular/forms';
 import { FormBaseComponent } from 'src/app/shared/base-components/form-base.component';
-import { Deposito } from '../models/Deposito';
+import { Deposito } from '../models/deposito';
 import { utilsBr } from 'js-brasil';
 import { DepositoService } from '../services/deposito.service';
 import { Router } from '@angular/router';
@@ -25,7 +25,7 @@ export class NovoComponent extends FormBaseComponent implements OnInit {
 
   MASKS = utilsBr.MASKS;
   formResult: string = '';
-  
+
   constructor(private fb: FormBuilder,
     private depositoService: DepositoService,
     private router: Router,
@@ -65,7 +65,7 @@ export class NovoComponent extends FormBaseComponent implements OnInit {
 
     this.depositoForm = this.fb.group({
       tipo: ['', [Validators.required]],
-    
+
       enderecoDeposito: this.fb.group({
         logradouro: ['', [Validators.required]],
         numero: ['', [Validators.required]],
@@ -77,13 +77,13 @@ export class NovoComponent extends FormBaseComponent implements OnInit {
       })
     });
 
-  
+
   }
 
   ngAfterViewInit(): void {
       super.configurarValidacaoFormularioBase(this.formInputElements, this.depositoForm)
   }
-    
+
 
   buscarCep(cep: string) {
 
