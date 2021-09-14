@@ -1,22 +1,14 @@
-#See https://aka.ms/containerfastmode to understand how Visual Studio uses this Dockerfile to build your images for faster debugging.
+FROM mcr.microsoft.com/dotnet/sdk:5.0 AS builder
+WORKDIR /source
 
-FROM mcr.microsoft.com/dotnet/aspnet:5.0 AS base
+COPY . ./src/GSL.Cadastro
+
+RUN (cd ./src/GSL.Cadastro; dotnet restore --disable-parallel --ignore-failed-sources)
+RUN (cd ./src/GSL.Cadastro/; dotnet publish --output /app/ --configuration Release)
+
+# Build da imagem
+FROM mcr.microsoft.com/dotnet/aspnet:5.0
 WORKDIR /app
-EXPOSE 80
-EXPOSE 443
-
-FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
-WORKDIR /src
-COPY ["src/GSL.Cadastro/GSL.Cadastro.csproj", "src/GSL.Cadastro/"]
-RUN dotnet restore "src/GSL.Cadastro/GSL.Cadastro.csproj"
-COPY . .
-WORKDIR "/src/src/GSL.Cadastro"
-RUN dotnet build "GSL.Cadastro.csproj" -c Release -o /app/build
-
-FROM build AS publish
-RUN dotnet publish "GSL.Cadastro.csproj" -c Release -o /app/publish
-
-FROM base AS final
-WORKDIR /app
-COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "GSL.Cadastro.dll"]
+COPY --from=builder /app .
+RUN cp /usr/share/zoneinfo/America/Sao_Paulo /etc/localtime
+ENTRYPOINT ["dotnet", "Api.dll"]
