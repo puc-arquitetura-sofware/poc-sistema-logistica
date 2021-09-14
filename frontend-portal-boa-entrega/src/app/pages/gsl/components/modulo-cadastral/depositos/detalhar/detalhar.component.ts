@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
-import { Deposito } from '../models/Deposito';
+import { Deposito } from '../models/deposito';
 
 @Component({
   selector: 'app-detalhar',
