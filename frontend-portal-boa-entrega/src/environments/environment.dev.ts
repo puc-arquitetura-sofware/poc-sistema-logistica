@@ -3,9 +3,9 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: true,
-  apiUrlv1: 'http://elb-cadastro-1859762146.us-east-2.elb.amazonaws.com/',
-  imagensUrl: 'http://elb-cadastro-1859762146.us-east-2.elb.amazonaws.com/'
+  production: false,
+  apiUrlv1: 'https://localhost:44365/api/',
+  imagensUrl: 'https://localhost:5001/'
 };
 
 /*
