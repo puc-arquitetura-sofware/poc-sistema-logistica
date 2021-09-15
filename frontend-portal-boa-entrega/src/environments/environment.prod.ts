@@ -1,5 +1,5 @@
 export const environment = {
   production: true,
-  apiUrlv1: 'https://localhost:5001/api/',
-  imagensUrl: 'https://localhost:5001/'
+  apiUrlv1: 'http://elb-cadastro-1859762146.us-east-2.elb.amazonaws.com/',
+  imagensUrl: 'http://elb-cadastro-1859762146.us-east-2.elb.amazonaws.com/'
 };
