@@ -15,6 +15,7 @@ import { NgBrazil } from 'ng-brazil';
 import { TextMaskModule } from 'angular2-text-mask';
 import { RouterModule } from '@angular/router';
 import { DepositoAppComponent } from './deposito.app.component';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 
 @NgModule({
@@ -32,7 +33,7 @@ import { DepositoAppComponent } from './deposito.app.component';
     ReactiveFormsModule,
     NgBrazil,
     TextMaskModule,
-    
+    SharedModule
   ],
   providers: [DepositoService, DepositoGuard, DepositoResolve]
 })

@@ -6,6 +6,8 @@ import { GslGuard } from './services/gsl.guard';
 import { GslAppComponent } from './gsl.app.component';
 import { RouterModule } from '@angular/router';
 import { MainComponent } from './components/main/main.component';
+import { MercadoriaService } from './services/mercadoria.service';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 
 @NgModule({
@@ -14,6 +16,9 @@ import { MainComponent } from './components/main/main.component';
     CommonModule,
     GslRoutingModule
   ],
-  providers: [GslGuard]
+  providers: [
+    GslGuard,
+    MercadoriaService,
+  ]
 })
 export class GslModule { }

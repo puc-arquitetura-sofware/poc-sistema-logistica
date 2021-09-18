@@ -6,7 +6,7 @@ import { ToastrService } from 'ngx-toastr';
 import { Perfil } from 'src/app/models/Perfil';
 import { PerfilService } from 'src/app/services/perfil/perfil.service';
 import { FormBaseComponent } from 'src/app/shared/base-components/form-base.component';
-import { Usuario } from '../models/usuario';
+import { Usuario } from '../../models/usuario';
 import { ContaService } from '../services/conta.service';
 
 @Component({

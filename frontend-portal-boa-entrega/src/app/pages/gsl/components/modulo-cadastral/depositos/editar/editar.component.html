@@ -39,6 +39,9 @@
 
         <div class="form-group">
             <input type="submit" value="Editar" class="btn btn-warning text-white">&nbsp;
+            
+            <a class="btn btn-success text-white mr-2" href="javascript:void(0)" (click)="abrirModal(vincularMercadoria)"> Vincular Mercadoria </a>
+
             <a class="btn btn-info" [routerLink]="['/gsl/modulo-gestao-servicos-logistica/modulo-cadastral/depositos/listar-todos']">Voltar</a>
         </div>
 
@@ -113,7 +116,9 @@
         </div>
     </form>
 
-    <!-- <lista-mercadoria [mercadorias]="fornecedor.mercadorias"></lista-mercadoria> -->
+    <div class="mt-5">
+        <app-lista-mercadoria  *ngIf="!!mercadoriasDeposito.length" [mercadorias]="mercadoriasDeposito" [titulo]="'Minhas Mercadorias'"></app-lista-mercadoria>
+    </div>
 
     <ng-template #content let-c="close" let-d="dismiss">
         <div class="modal-header">
@@ -234,4 +239,60 @@
         </form>
 
     </ng-template>
+
+    
+    <ng-template #vincularMercadoria let-c="close" let-d="dismiss">
+        <div class="modal-header">
+            <h4 class="modal-title" id="modal-basic-title">Vincular Mercadoria</h4>
+            <button type="button" class="close" aria-label="Close" (click)="d('')">
+                <span aria-hidden="true">&times;</span>
+              </button>
+        </div>
+
+        <form   [formGroup]="vinculoForm" (ngSubmit)="vincularMercadoriaDeposito()">
+            <div class="modal-body">
+
+                <div class="alert alert-danger" *ngIf="errorsVinculo.length > 0">
+                    <h3 id="msgRetorno">Opa! Alguma coisa não deu certo:</h3>
+                    <ul>
+                        <li *ngFor="let error of errorsVinculo">{{ error }}</li>
+                    </ul>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label">Mercadorias</label>
+                    <div>
+                        <select 
+                        class="form-control" 
+                        id="mercadoriaId" 
+                        formControlName="mercadoriaId" 
+                        [ngClass]="{ 'is-invalid': displayMessage.mercadoriaId }">
+                            <option value="">Selecione uma mercadoria</option>
+                            <option *ngFor="let mercadoria of mercadorias" [value]="mercadoria.id">{{ mercadoria.descricao}}</option>
+                        </select>
+                        <span class="text-danger" *ngIf="displayMessage.mercadoriaId">
+                            <p [innerHTML]="displayMessage.mercadoriaId"></p>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Quantidade</label>
+                    <div class="">
+                        <input class="form-control" id="quantidade" type="text" placeholder="Número (requerido)" formControlName="quantidade" [ngClass]="{ 'is-invalid': displayMessage.quantidade }" />
+                        <span class="text-danger" *ngIf="displayMessage.quantidade">
+                            <p [innerHTML]="displayMessage.quantidade"></p>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <input type="submit" value="Vincular" class="btn btn-success text-white">
+            </div>
+        </form>
+
+    </ng-template>
+
+
+
 </div>

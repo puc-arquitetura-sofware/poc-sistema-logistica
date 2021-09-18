@@ -4,8 +4,8 @@ import { Observable, of } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { BaseService } from 'src/app/services/base.service';
 import { PerfilService } from 'src/app/services/perfil/perfil.service';
-import { CepConsulta } from '../models/endereco';
-import { Usuario } from '../models/usuario';
+import { CepConsulta } from '../../models/endereco';
+import { Usuario } from '../../models/usuario';
 
 @Injectable({
   providedIn: 'root'

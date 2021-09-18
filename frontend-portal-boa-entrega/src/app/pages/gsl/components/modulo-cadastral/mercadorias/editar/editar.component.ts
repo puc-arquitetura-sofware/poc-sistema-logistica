@@ -4,7 +4,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 
 import { ToastrService } from 'ngx-toastr';
 
-import { MercadoriaService } from '../services/mercadoria.service';
+import { MercadoriaService } from '../../../../services/mercadoria.service';
 import { environment } from 'src/environments/environment';
 import { MercadoriaBaseComponent } from '../mercadoria-form.base.component';
 import { CurrencyUtils } from 'src/app/shared/utils/currency-utils';

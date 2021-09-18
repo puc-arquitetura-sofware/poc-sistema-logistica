@@ -1,10 +1,22 @@
 <div class="container main-container">
 
     <h1>Lista de Depositos</h1>
-
-    <p>
-        <a class="btn btn-warning text-white" [routerLink]="['/gsl/modulo-gestao-servicos-logistica/modulo-cadastral/depositos/adicionar-novo']">Novo Deposito</a>
-    </p>
+    <div class="row">
+        <div class="col-6 d-flex align-items-center">
+            <p>
+                <a class="btn btn-warning text-white" [routerLink]="['/gsl/modulo-gestao-servicos-logistica/modulo-cadastral/depositos/adicionar-novo']">Novo Deposito</a>
+            </p>
+        </div>
+        <div class="col-6">
+            <div class="form-group">
+                
+                <label class="">Filtrar Depositos</label>
+                <div >
+                    <input class="form-control" id="enderecoDeposito" type="text" (keyup)="filtrar($event.target.value)" placeholder="Digite o endereço do Deposito"/>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <table class="table table-hover">
         <thead class="thead-dark">

@@ -3,10 +3,10 @@ import { AbstractControl, FormBuilder, FormControl, FormControlName, FormGroup, 
 import { ActivatedRoute, Router } from '@angular/router';
 import { CustomValidators } from 'ngx-custom-validators';
 import { FormBaseComponent } from 'src/app/shared/base-components/form-base.component';
-import { Usuario } from '../models/usuario';
+import { Usuario } from '../../models/usuario';
 import { ContaService } from '../services/conta.service';
 import { StringUtils } from 'src/app/shared/utils/string-utils';
-import { CepConsulta } from '../models/endereco';
+import { CepConsulta } from '../../models/endereco';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { NgBrazilValidators } from 'ng-brazil';
 import { ToastrService } from 'ngx-toastr';
@@ -180,7 +180,6 @@ export class CadastroComponent extends FormBaseComponent implements OnInit, Afte
    }
 
   adicionarConta() {
-    debugger;
     if (this.cadastroForm.dirty && this.cadastroForm.valid) {
       
       this.usuario = Object.assign({}, this.usuario, this.cadastroForm.value);
@@ -191,7 +190,6 @@ export class CadastroComponent extends FormBaseComponent implements OnInit, Afte
       this.contaService.registrarUsuario(this.usuario)
         .subscribe(
           sucesso => { 
-            debugger;
             var response = {
               userToken: sucesso,
               accessToken: "algumTokenAleatórioPorAqui"

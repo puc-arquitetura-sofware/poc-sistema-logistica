@@ -14,23 +14,26 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ErrorInterceptor } from './services/error.handler.service';
 import { SafModule } from './pages/saf/saf.module';
 import { PerfilService } from './services/perfil/perfil.service';
-
+import { ListaMercadoriaComponent } from './shared/components/lista-mercadoria/lista-mercadoria.component';
+import { SharedModule } from './shared/shared.module';
+import '@angular/compiler';
 export const httpInterceptorProviders = [
   { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
 ];
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NavegacaoModule,
+    SharedModule,
     NgbModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
-    HttpClientModule,
+    HttpClientModule
   ],
   providers: [
     httpInterceptorProviders,

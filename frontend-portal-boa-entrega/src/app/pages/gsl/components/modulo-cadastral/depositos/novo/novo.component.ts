@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { NgBrazilValidators } from 'ng-brazil';
 import { StringUtils } from 'src/app/shared/utils/string-utils';
-import { CepConsulta } from 'src/app/pages/conta/models/endereco';
+import { CepConsulta } from 'src/app/pages/models/endereco';
 
 @Component({
   selector: 'app-novo',

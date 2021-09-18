@@ -1,0 +1,58 @@
+<hr>
+<h4>{{ titulo }}</h4>
+<hr>
+
+<div class="form-group">
+    <label class="control-label">Filtrar Mercadorias</label>
+    <div >
+        <input class="form-control" id="nomeMercadoria" type="text" (keyup)="filtrar($event.target.value)" placeholder="Digite o nome da mercadoria"/>
+    </div>
+</div>
+<table class="table table-hover">
+    <thead class="thead-dark">
+        <tr>
+            <!-- <th>
+
+            </th> -->
+            <th>
+                Nome
+            </th>
+            <!-- <th>
+                Fornecedor
+            </th> -->
+            <th>
+                Valor
+            </th>
+            <th>
+                Descrição
+            </th>
+            <th>
+                Ativo?
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let mercadoria of mercadorias">
+            <!-- <td>
+                <img src="{{ imagens }}{{ mercadoria.imagem }}" style="width: 70px; height: 100px">
+            </td> -->
+            <td>
+                {{ mercadoria.nome }}
+            </td>
+            <!-- <td>
+                {{ mercadoria.nomeFornecedor }}
+            </td> -->
+            <td>
+                {{ mercadoria.valor | currencyBrazil }}
+            </td>
+            <td>
+                {{ mercadoria.descricao }}
+            </td>
+            <td>
+                <input [checked]="mercadoria.ativo" class="check-box" disabled="disabled" type="checkbox">
+            </td>
+            
+        </tr>
+    </tbody>
+</table>

@@ -12,7 +12,7 @@ import { NovoComponent } from './novo/novo.component';
 import { EditarComponent } from './editar/editar.component';
 import { ExcluirComponent } from './excluir/excluir.component';
 import { DetalhesComponent } from './detalhes/detalhes.component';
-import { MercadoriaService } from './services/mercadoria.service';
+import { MercadoriaService } from '../../../services/mercadoria.service';
 import { MercadoriaResolve } from './services/mercadoria.resolve';
 import { MercadoriaGuard } from './services/mercadoria.guard';
 
@@ -34,7 +34,6 @@ import { MercadoriaGuard } from './services/mercadoria.guard';
     ReactiveFormsModule,
   ],
   providers: [
-    MercadoriaService,
     MercadoriaResolve,
     MercadoriaGuard
   ]
