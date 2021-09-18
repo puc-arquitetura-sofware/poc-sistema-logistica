@@ -5,7 +5,7 @@ import { ToastrService } from 'ngx-toastr';
 import { MercadoriaService } from 'src/app/pages/gsl/services/mercadoria.service';
 import { Mercadoria } from 'src/app/pages/models/mercadoria';
 import { MercadoriaDeposito } from 'src/app/pages/models/mercadoriaDeposito';
-import { Deposito } from '../models/Deposito';
+import { Deposito } from '../models/deposito';
 
 @Component({
   selector: 'app-detalhar',
