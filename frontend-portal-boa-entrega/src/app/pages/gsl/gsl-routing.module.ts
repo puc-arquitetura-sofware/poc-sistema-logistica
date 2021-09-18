@@ -15,6 +15,11 @@ const routes: Routes = [ {
         path: 'modulo-gestao-servicos-logistica/modulo-cadastral',
         loadChildren: () => import('./components/modulo-cadastral/modulo-cadastral.module')
           .then(m => m.ModuloCadastralModule)
+      },
+      {
+        path: 'modulo-gestao-servicos-logistica/modulo-gestao-estrategica',
+        loadChildren: () => import('./components/modulo-gestao-estrategica/modulo-gestao-estrategica.module')
+          .then(m => m.ModuloGestaoEstrategicaModule)
       }
   ]
 }];
