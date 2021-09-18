@@ -1,15 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
-<<<<<<< HEAD
 import { ToastrService } from 'ngx-toastr';
 import { MercadoriaService } from 'src/app/pages/gsl/services/mercadoria.service';
 import { Mercadoria } from 'src/app/pages/models/mercadoria';
 import { MercadoriaDeposito } from 'src/app/pages/models/mercadoriaDeposito';
 import { Deposito } from '../models/Deposito';
-=======
-import { Deposito } from '../models/deposito';
->>>>>>> 2ceb3fefc91528b117e3e9ae4e550db1841c6105
 
 @Component({
   selector: 'app-detalhar',
@@ -36,7 +32,6 @@ export class DetalharComponent {
   public EnderecoCompleto(): string {
     return this.deposito.enderecoDeposito.logradouro + ", " + this.deposito.enderecoDeposito.numero + " - " + this.deposito.enderecoDeposito.bairro + ", " + this.deposito.enderecoDeposito.cidade + " - " + this.deposito.enderecoDeposito.estado;
   }
-<<<<<<< HEAD
 
   preencherMercadoriasDeposito() {
     this.mercadoriaService.obterPorDeposito(this.deposito.id).subscribe( 
@@ -53,6 +48,3 @@ export class DetalharComponent {
   }
 
 }
-=======
-}
->>>>>>> 2ceb3fefc91528b117e3e9ae4e550db1841c6105
