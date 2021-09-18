@@ -1,0 +1,50 @@
+<div class="container main-container">
+    <h1>Detalhes do cliente {{ cliente.nome }}</h1>
+
+    <div>
+        <h4>Informação somente leitura</h4>
+        <hr />
+        <dl class="row">
+            <dt class="col-sm-2">
+            <label class="control-label">Nome</label>
+        </dt>
+        <dd class="col-sm-10">
+            {{ cliente.nome }}
+        </dd>
+
+        <dt class="col-sm-2">
+                <label class="control-label">Documento</label>
+        </dt>
+        <dd class="col-sm-10">
+            {{cliente.perfil === idPerfilCliente ? (cliente.cpfCnpj | cpf) : (cliente.cpfCnpj | cnpj ) }}
+        </dd>
+
+        <dt class="col-sm-2">
+            <label class="control-label">Perfil</label>
+        </dt>
+        <dd class="col-sm-10">
+            {{cliente.perfil === idPerfilCliente ? 'Cliente' : 'Fornecedor' }}
+        </dd>
+
+        <dt class="col-sm-2">
+                <label class="control-label">Ativo</label>
+        </dt>
+            <dd class="col-sm-10">
+                <input [checked]="cliente.ativo" class="check-box" disabled="disabled" type="checkbox">
+            </dd>
+        </dl>
+        <div class="row">
+            <br>
+            <iframe width="100%" height="450" frameborder="0" style="border:0; padding-bottom: 50px;" [src]="enderecoMap" allowfullscreen></iframe>
+        </div>
+    </div>
+
+    <div class="mt-5">
+        <app-lista-mercadoria  *ngIf="!!mercadoriasCliente.length" [mercadorias]="mercadoriasCliente" [titulo]="'Minhas Mercadorias'"></app-lista-mercadoria>
+    </div>
+
+    <div>
+        <a class="btn btn-warning text-white" [routerLink]="['/gsl/modulo-gestao-servicos-logistica/modulo-cadastral/clientes/editar',cliente.id]">Editar</a>&nbsp;
+        <a class="btn btn-info" [routerLink]="['/gsl/modulo-gestao-servicos-logistica/modulo-cadastral/clientes/listar-todos']">Voltar</a>
+    </div>
+</div>

@@ -18,7 +18,10 @@
         </div>
     </div>
 
-    <!-- <lista-mercadoria [mercadorias]="deposito.mercadorias"></lista-mercadoria> -->
+    <div class="mt-5">
+        <app-lista-mercadoria  *ngIf="!!mercadoriasDeposito.length" [mercadorias]="mercadoriasDeposito" [titulo]="'Minhas Mercadorias'"></app-lista-mercadoria>
+    </div>
+
 
     <div>
         <a class="btn btn-warning text-white" [routerLink]="['/gsl/modulo-gestao-servicos-logistica/modulo-cadastral/depositos/editar',deposito.id]">Editar</a>&nbsp;

@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve --open",
+    "start:dev": "ng serve  --configuration=dev --aot --open",
+    "start:prod": "ng serve  --configuration=production --aot --open",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",

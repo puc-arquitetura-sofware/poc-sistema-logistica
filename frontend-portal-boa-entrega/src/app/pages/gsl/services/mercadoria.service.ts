@@ -5,7 +5,7 @@ import { Observable } from "rxjs";
 import { catchError, map } from "rxjs/operators";
 
 import { BaseService } from 'src/app/services/base.service';
-import { Mercadoria, Fornecedor } from '../models/mercadoria';
+import { Mercadoria, Fornecedor } from '../../models/mercadoria';
 
 @Injectable()
 export class MercadoriaService extends BaseService {
@@ -21,6 +21,19 @@ export class MercadoriaService extends BaseService {
     obterPorId(id: string): Observable<Mercadoria> {
         return this.http
             .get<Mercadoria>(this.UrlServiceV1 + "mercadoria/id?id=" + id, super.ObterAuthHeaderJson())
+            .pipe(catchError(super.serviceError));
+    }
+
+    obterPorDeposito(depositoId: string): Observable<Mercadoria[]> {
+        return this.http
+            .get<Mercadoria[]>(this.UrlServiceV1 + "mercadoria/obter-por-deposito?depositoId=" + depositoId, super.ObterAuthHeaderJson())
+            .pipe(catchError(super.serviceError));
+    }
+
+
+    obterPorCliente(clienteId: string): Observable<Mercadoria[]> {
+        return this.http
+            .get<Mercadoria[]>(this.UrlServiceV1 + "mercadoria/obter-por-cliente?clienteId=" + clienteId, super.ObterAuthHeaderJson())
             .pipe(catchError(super.serviceError));
     }
 

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Mercadoria } from '../models/mercadoria';
+import { Mercadoria } from '../../../../../models/mercadoria';
 import { ActivatedRoute } from '@angular/router';
 import { environment } from 'src/environments/environment';
 

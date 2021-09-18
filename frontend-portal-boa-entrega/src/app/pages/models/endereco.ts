@@ -7,7 +7,7 @@ export class Endereco {
     cep: string;
     cidade: string;
     estado: string;
-    fornecedorId: string;
+    usuarioId: string;
 }
 
 export class CepConsulta {

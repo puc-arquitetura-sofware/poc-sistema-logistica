@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Mercadoria } from '../models/mercadoria';
-import { MercadoriaService } from '../services/mercadoria.service';
+import { Mercadoria } from '../../../../../models/mercadoria';
+import { MercadoriaService } from '../../../../services/mercadoria.service';
 import { environment } from 'src/environments/environment';
 
 @Component({

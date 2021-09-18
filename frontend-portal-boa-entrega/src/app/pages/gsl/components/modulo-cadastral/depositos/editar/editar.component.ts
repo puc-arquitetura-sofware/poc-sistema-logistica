@@ -10,6 +10,9 @@ import { ToastrService } from 'ngx-toastr';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { NgBrazilValidators } from 'ng-brazil';
 import { StringUtils } from 'src/app/shared/utils/string-utils';
+import { MercadoriaService } from '../../../../services/mercadoria.service';
+import { Mercadoria } from 'src/app/pages/models/mercadoria';
+import { MercadoriaDeposito } from 'src/app/pages/models/mercadoriaDeposito';
 
 @Component({
   selector: 'app-editar',
@@ -22,12 +25,18 @@ export class EditarComponent extends FormBaseComponent implements OnInit {
 
   errors: any[] = [];
   errorsEndereco: any[] = [];
-
+  errorsVinculo: any[] = [];
+  
+  
   depositoForm: FormGroup;
   enderecoForm: FormGroup;
-
+  vinculoForm: FormGroup;
+  
   deposito: Deposito;
   endereco: EnderecoDeposito;
+  mercadorias: Mercadoria[] = []
+  mercadoriasDeposito: Mercadoria[] = []
+  mercadoriaDeposito: MercadoriaDeposito;
 
   textoDocumento: string = '';
 
@@ -36,6 +45,7 @@ export class EditarComponent extends FormBaseComponent implements OnInit {
 
   constructor(private fb: FormBuilder,
     private depositoService: DepositoService,
+    private mercadoriaService: MercadoriaService,
     private router: Router,
     private toastr: ToastrService,
     private route: ActivatedRoute,
@@ -75,6 +85,8 @@ export class EditarComponent extends FormBaseComponent implements OnInit {
 
     super.configurarMensagensValidacaoBase(this.validationMessages);
     this.deposito = this.route.snapshot.data['deposito'];
+    this.preencherMercadorias();
+    this.preencherMercadoriasDeposito();
   }
 
   ngOnInit() {
@@ -96,6 +108,13 @@ export class EditarComponent extends FormBaseComponent implements OnInit {
       depositoId: ''
     });
 
+    this.vinculoForm = this.fb.group({
+      mercadoriaId: ['', [Validators.required]],
+      depositoId: ['', [Validators.required]],
+      quantidade: ['', [Validators.required]],
+    });
+
+
     this.preencherForm();
 
   }
@@ -107,6 +126,12 @@ export class EditarComponent extends FormBaseComponent implements OnInit {
       tipo: this.deposito.tipo,
     });
 
+    this.vinculoForm.patchValue({
+      depositoId: this.deposito.id
+      
+    });
+
+    
     this.enderecoForm.patchValue({
       id: this.deposito.enderecoDeposito.id,
       logradouro: this.deposito.enderecoDeposito.logradouro,
@@ -145,6 +170,24 @@ export class EditarComponent extends FormBaseComponent implements OnInit {
     });
   }
 
+  preencherMercadorias() {
+    this.mercadoriaService.obterTodos().subscribe( 
+      mercadoria => {
+        this.mercadorias = mercadoria;
+      },
+      falha => { this.processarFalha(falha) }
+      );
+  }
+
+  preencherMercadoriasDeposito() {
+    this.mercadoriaService.obterPorDeposito(this.deposito.id).subscribe( 
+      mercadoria => {
+        this.mercadoriasDeposito = mercadoria;
+      },
+      falha => { this.processarFalha(falha) }
+      );
+  }
+
   editarDeposito() {
     if (this.depositoForm.dirty && this.depositoForm.valid) {
 
@@ -176,7 +219,6 @@ export class EditarComponent extends FormBaseComponent implements OnInit {
   }
 
   editarEndereco() {
-    debugger;
     if (this.enderecoForm.dirty && this.enderecoForm.valid) {
 
       this.endereco = Object.assign({}, this.endereco, this.enderecoForm.value);
@@ -193,17 +235,41 @@ export class EditarComponent extends FormBaseComponent implements OnInit {
     }
   }
 
+  vincularMercadoriaDeposito() {
+    debugger;
+    if (this.vinculoForm.dirty && this.vinculoForm.valid) {
+      this.mercadoriaDeposito = Object.assign({}, this.mercadoriaDeposito, this.vinculoForm.value);
+      this.depositoService.vincularMercadoria(this.mercadoriaDeposito).subscribe(
+        sucesso => {
+          var mercadorias = this.mercadoriaService.obterTodos().subscribe(
+            mercadorias => {
+              debugger;
+              this.mercadoriasDeposito = mercadorias;
+            },
+            erro => this.processarFalhaVinculo(erro)
+          )
+
+        },
+        erro => this.processarFalhaVinculo(erro)
+      )
+    }
+  }
+
   processarSucessoEndereco(endereco: EnderecoDeposito) {
     this.errors = [];
 
     this.toastr.success('Endereço atualizado com sucesso!', 'Sucesso!');
-    debugger;
     this.deposito.enderecoDeposito = endereco
     this.modalService.dismissAll();
   }
 
   processarFalhaEndereco(fail: any) {
     this.errorsEndereco = fail.error.errors;
+    this.toastr.error('Ocorreu um erro!', 'Opa :(');
+  }
+
+  processarFalhaVinculo(fail: any) {
+    this.errorsVinculo = fail.error.errors;
     this.toastr.error('Ocorreu um erro!', 'Opa :(');
   }
 

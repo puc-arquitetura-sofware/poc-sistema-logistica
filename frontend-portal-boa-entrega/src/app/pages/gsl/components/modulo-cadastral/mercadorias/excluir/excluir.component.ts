@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { MercadoriaService } from '../services/mercadoria.service';
+import { MercadoriaService } from '../../../../services/mercadoria.service';
 
 import { ToastrService } from 'ngx-toastr';
 
-import { Mercadoria } from '../models/mercadoria';
+import { Mercadoria } from '../../../../../models/mercadoria';
 import { environment } from 'src/environments/environment';
 
 @Component({

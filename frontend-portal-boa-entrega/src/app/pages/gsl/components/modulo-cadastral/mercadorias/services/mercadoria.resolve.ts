@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Resolve, ActivatedRouteSnapshot } from '@angular/router';
-import { Mercadoria } from '../models/mercadoria';
-import { MercadoriaService } from './mercadoria.service';
+import { Mercadoria } from '../../../../../models/mercadoria';
+import { MercadoriaService } from '../../../../services/mercadoria.service';
 
 @Injectable()
 export class MercadoriaResolve implements Resolve<Mercadoria> {

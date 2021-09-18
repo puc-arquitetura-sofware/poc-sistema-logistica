@@ -7,7 +7,7 @@ import { Observable, fromEvent, merge } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
 import { ImageCroppedEvent, ImageTransform, Dimensions } from 'ngx-image-cropper';
 
-import { MercadoriaService } from '../services/mercadoria.service';
+import { MercadoriaService } from '../../../../services/mercadoria.service';
 import { MercadoriaBaseComponent } from '../mercadoria-form.base.component';
 import { CurrencyUtils } from 'src/app/shared/utils/currency-utils';
 

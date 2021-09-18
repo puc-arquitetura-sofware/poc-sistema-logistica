@@ -1,4 +1,4 @@
-import { Mercadoria, Fornecedor } from './models/mercadoria';
+import { Mercadoria, Fornecedor } from '../../../../models/mercadoria';
 import { FormGroup } from '@angular/forms';
 import { ElementRef } from '@angular/core';
 
