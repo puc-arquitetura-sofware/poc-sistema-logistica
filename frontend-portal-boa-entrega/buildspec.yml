@@ -8,23 +8,21 @@ env:
 phases:
     install:
         runtime-versions:
-          nodejs: 8
+          nodejs: 14
         commands:
+            - cd frontend-portal-boa-entrega
+            - npm install
             - npm install -g @angular/cli
-            - ng update @angular/cli
-            - ng update @angular/core
-            - ng update
-            - ng update @angular/cli --from=1.7.4 --migrate-only
+            - npm install -g @angular/core
     build:
         commands:
             - echo Build started on `date`
-            - ng build
+            - ng build --prod --configuration=production
     post_build:
-         commands:
+        commands:
             - aws s3 cp ${BUILD_FOLDER} s3://${S3_BUCKET} --recursive --acl public-read --cache-control "max-age=${CACHE_CONTROL}"
             - echo Build completed on `date`
 artifacts:
     files:
         - '**/*'
-    base-directory: 'dist*'
-    discard-paths: yes
+    discard-paths: no

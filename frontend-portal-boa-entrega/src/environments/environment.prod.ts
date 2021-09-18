@@ -1,5 +1,5 @@
 export const environment = {
   production: true,
-  apiUrlv1: 'https://localhost:5001/api/',
-  imagensUrl: 'https://localhost:5001/'
+  apiUrlv1: 'http://boacompracadastro-env.eba-dbh34kvt.us-east-2.elasticbeanstalk.com/api/',
+  imagensUrl: 'http://boacompracadastro-env.eba-dbh34kvt.us-east-2.elasticbeanstalk.com/api/'
 };

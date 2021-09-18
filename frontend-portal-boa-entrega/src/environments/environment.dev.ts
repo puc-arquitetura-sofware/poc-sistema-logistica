@@ -3,9 +3,9 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: true,
-  apiUrlv1: 'http://boacompracadastro-env.eba-dbh34kvt.us-east-2.elasticbeanstalk.com/api/',
-  imagensUrl: 'http://boacompracadastro-env.eba-dbh34kvt.us-east-2.elasticbeanstalk.com/api/'
+  production: false,
+  apiUrlv1: 'https://localhost:44365/api/',
+  imagensUrl: 'https://localhost:5001/'
 };
 
 /*

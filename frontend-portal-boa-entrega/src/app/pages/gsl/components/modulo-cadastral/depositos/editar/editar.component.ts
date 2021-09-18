@@ -1,7 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChildren } from '@angular/core';
 import { FormBuilder, FormControlName, FormGroup, Validators } from '@angular/forms';
 import { FormBaseComponent } from 'src/app/shared/base-components/form-base.component';
-import { Deposito } from '../models/Deposito';
+import { Deposito } from '../models/deposito';
 import { CepConsulta, EnderecoDeposito } from '../models/enderecoDeposito';
 import { utilsBr } from 'js-brasil';
 import { DepositoService } from '../services/deposito.service';

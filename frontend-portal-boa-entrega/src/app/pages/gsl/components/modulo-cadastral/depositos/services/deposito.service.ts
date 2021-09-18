@@ -6,14 +6,14 @@ import { catchError, map } from 'rxjs/operators';
 import { MercadoriaDeposito } from 'src/app/pages/models/mercadoriaDeposito';
 
 import { BaseService } from 'src/app/services/base.service';
-import { Deposito } from '../models/Deposito';
+import { Deposito } from '../models/deposito';
 import { CepConsulta, EnderecoDeposito } from '../models/enderecoDeposito';
 
 
 @Injectable()
 export class DepositoService extends BaseService {
 
-    constructor(private http: HttpClient) 
+    constructor(private http: HttpClient)
         { super(); }
 
     obterTodos(): Observable<Deposito[]> {
