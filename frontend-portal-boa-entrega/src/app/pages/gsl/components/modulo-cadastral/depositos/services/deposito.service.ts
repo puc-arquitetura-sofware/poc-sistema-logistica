@@ -25,13 +25,13 @@ export class DepositoService extends BaseService {
 
     obterPorId(id: string): Observable<Deposito> {
         return this.http
-            .get<Deposito>(this.UrlServiceV1 + "deposito/id?id=" + id, super.ObterAuthHeaderJson())
+            .get<Deposito>(this.UrlServiceV1 + "deposito/id?id=" + id)
             .pipe(catchError(super.serviceError));
     }
 
     registrarDeposito(deposito: Deposito): Observable<any> {
         return this.http
-            .post(this.UrlServiceV1 + "deposito/novo-deposito", deposito, super.ObterAuthHeaderJson())
+            .post(this.UrlServiceV1 + "deposito/novo-deposito", deposito)
             .pipe(
                 map(super.extractData),
                 catchError(super.serviceError));
@@ -39,13 +39,13 @@ export class DepositoService extends BaseService {
 
     vincularMercadoria(mercadoriaDeposito: MercadoriaDeposito): Observable<any> {
         return this.http
-            .post(this.UrlServiceV1 + "deposito/vincular-mercadoria?mercadoriaId=" + mercadoriaDeposito.mercadoriaId + "&depositoId=" + mercadoriaDeposito.depositoId + "&quantidade=" + mercadoriaDeposito.quantidade, super.ObterAuthHeaderJson())
+            .post(this.UrlServiceV1 + "deposito/vincular-mercadoria?mercadoriaId=" + mercadoriaDeposito.mercadoriaId + "&depositoId=" + mercadoriaDeposito.depositoId + "&quantidade=" + mercadoriaDeposito.quantidade,"")
             .pipe(catchError(super.serviceError));
     }
 
     atualizarDeposito(deposito: Deposito): Observable<Deposito> {
         return this.http
-            .put(this.UrlServiceV1 + "deposito/id?id=" + deposito.id, deposito, super.ObterAuthHeaderJson())
+            .put(this.UrlServiceV1 + "deposito/id?id=" + deposito.id, deposito)
             .pipe(
                 map(super.extractData),
                 catchError(super.serviceError));
@@ -53,7 +53,7 @@ export class DepositoService extends BaseService {
 
     excluirDeposito(id: string): Observable<Deposito> {
         return this.http
-            .delete(this.UrlServiceV1 + "deposito/id?id=" + id, super.ObterAuthHeaderJson())
+            .delete(this.UrlServiceV1 + "deposito/id?id=" + id)
             .pipe(
                 map(super.extractData),
                 catchError(super.serviceError));
@@ -61,7 +61,7 @@ export class DepositoService extends BaseService {
 
     atualizarEndereco(endereco: EnderecoDeposito): Observable<EnderecoDeposito> {
         return this.http
-            .put(this.UrlServiceV1 + "deposito/endereco/id?id=" + endereco.id, endereco, super.ObterAuthHeaderJson())
+            .put(this.UrlServiceV1 + "deposito/endereco/id?id=" + endereco.id, endereco)
             .pipe(
                 map(super.extractData),
                 catchError(super.serviceError));
