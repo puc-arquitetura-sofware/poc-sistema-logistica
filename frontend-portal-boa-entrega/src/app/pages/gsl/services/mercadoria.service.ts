@@ -14,32 +14,32 @@ export class MercadoriaService extends BaseService {
 
     obterTodos(): Observable<Mercadoria[]> {
         return this.http
-            .get<Mercadoria[]>(this.UrlServiceV1 + "mercadoria", super.ObterAuthHeaderJson())
+            .get<Mercadoria[]>(this.UrlServiceV1 + "mercadoria")
             .pipe(catchError(super.serviceError));
     }
 
     obterPorId(id: string): Observable<Mercadoria> {
         return this.http
-            .get<Mercadoria>(this.UrlServiceV1 + "mercadoria/id?id=" + id, super.ObterAuthHeaderJson())
+            .get<Mercadoria>(this.UrlServiceV1 + "mercadoria/id?id=" + id)
             .pipe(catchError(super.serviceError));
     }
 
     obterPorDeposito(depositoId: string): Observable<Mercadoria[]> {
         return this.http
-            .get<Mercadoria[]>(this.UrlServiceV1 + "mercadoria/obter-por-deposito?depositoId=" + depositoId, super.ObterAuthHeaderJson())
+            .get<Mercadoria[]>(this.UrlServiceV1 + "mercadoria/obter-por-deposito?depositoId=" + depositoId)
             .pipe(catchError(super.serviceError));
     }
 
 
     obterPorCliente(clienteId: string): Observable<Mercadoria[]> {
         return this.http
-            .get<Mercadoria[]>(this.UrlServiceV1 + "mercadoria/obter-por-cliente?clienteId=" + clienteId, super.ObterAuthHeaderJson())
+            .get<Mercadoria[]>(this.UrlServiceV1 + "mercadoria/obter-por-cliente?clienteId=" + clienteId)
             .pipe(catchError(super.serviceError));
     }
 
     novoMercadoria(mercadoria: Mercadoria): Observable<Mercadoria> {
         return this.http
-            .post(this.UrlServiceV1 + "mercadoria", mercadoria, super.ObterAuthHeaderJson())
+            .post(this.UrlServiceV1 + "mercadoria", mercadoria)
             .pipe(
                 map(super.extractData),
                 catchError(super.serviceError));
@@ -47,7 +47,7 @@ export class MercadoriaService extends BaseService {
 
     atualizarMercadoria(mercadoria: Mercadoria): Observable<Mercadoria> {
         return this.http
-            .put(this.UrlServiceV1 + "mercadoria/id?id=" + mercadoria.id, mercadoria, super.ObterAuthHeaderJson())
+            .put(this.UrlServiceV1 + "mercadoria/id?id=" + mercadoria.id, mercadoria)
             .pipe(
                 map(super.extractData),
                 catchError(super.serviceError));
@@ -55,7 +55,7 @@ export class MercadoriaService extends BaseService {
 
     excluirMercadoria(id: string): Observable<Mercadoria> {
         return this.http
-            .delete(this.UrlServiceV1 + "mercadoria/id?id=" + id, super.ObterAuthHeaderJson())
+            .delete(this.UrlServiceV1 + "mercadoria/id?id=" + id)
             .pipe(
                 map(super.extractData),
                 catchError(super.serviceError));

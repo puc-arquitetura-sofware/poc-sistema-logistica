@@ -24,19 +24,19 @@ export class ClienteService extends BaseService {
 
     obterPorId(id: string): Observable<Usuario> {
         return this.http
-            .get<Usuario>(this.UrlServiceV1 + "usuario/id?id=" + id, super.ObterAuthHeaderJson())
+            .get<Usuario>(this.UrlServiceV1 + "usuario/id?id=" + id)
             .pipe(catchError(super.serviceError));
     }
 
     vincularMercadoria(mercadoriaCliente: MercadoriaCliente): Observable<any> {
         return this.http
-            .post(this.UrlServiceV1 + "usuario/vincular-mercadoria?mercadoriaId=" + mercadoriaCliente.mercadoriaId + "&clienteId=" + mercadoriaCliente.clienteId, super.ObterAuthHeaderJson())
+            .post(this.UrlServiceV1 + "usuario/vincular-mercadoria?mercadoriaId=" + mercadoriaCliente.mercadoriaId + "&clienteId=" + mercadoriaCliente.clienteId,"")
             .pipe(catchError(super.serviceError));
     }
 
     novoUsuario(Usuario: Usuario): Observable<Usuario> {
         return this.http
-            .post(this.UrlServiceV1 + "usuario", Usuario, this.ObterAuthHeaderJson())
+            .post(this.UrlServiceV1 + "usuario", Usuario)
             .pipe(
                 map(super.extractData),
                 catchError(super.serviceError));
@@ -44,7 +44,7 @@ export class ClienteService extends BaseService {
 
     atualizarUsuario(Usuario: Usuario): Observable<Usuario> {
         return this.http
-            .put(this.UrlServiceV1 + "usuario/id?id=" + Usuario.id, Usuario, super.ObterAuthHeaderJson())
+            .put(this.UrlServiceV1 + "usuario/id?id=" + Usuario.id, Usuario)
             .pipe(
                 map(super.extractData),
                 catchError(super.serviceError));
@@ -52,7 +52,7 @@ export class ClienteService extends BaseService {
 
     excluirUsuario(id: string): Observable<Usuario> {
         return this.http
-            .delete(this.UrlServiceV1 + "usuario/id?id=" + id, super.ObterAuthHeaderJson())
+            .delete(this.UrlServiceV1 + "usuario/id?id=" + id)
             .pipe(
                 map(super.extractData),
                 catchError(super.serviceError));
@@ -60,15 +60,15 @@ export class ClienteService extends BaseService {
 
     atualizarEndereco(endereco: Endereco): Observable<Endereco> {
         return this.http
-            .put(this.UrlServiceV1 + "usuario/endereco/id?id=" + endereco.id, endereco, super.ObterAuthHeaderJson())
+            .put(this.UrlServiceV1 + "usuario/endereco/id?id=" + endereco.id, endereco)
             .pipe(
                 map(super.extractData),
                 catchError(super.serviceError));
     }
 
     consultarCep(cep: string): Observable<CepConsulta> {
-        return this.http
-            .get<CepConsulta>(`https://viacep.com.br/ws/${cep}/json/`)
-            .pipe(catchError(super.serviceError))
+      return this.http
+        .get<CepConsulta>(`https://viacep.com.br/ws/${cep}/json/`)
+        .pipe(catchError(super.serviceError));
     }
 }
