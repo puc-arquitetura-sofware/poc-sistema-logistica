@@ -20,6 +20,11 @@ const routes: Routes = [ {
         path: 'modulo-gestao-servicos-logistica/modulo-gestao-estrategica',
         loadChildren: () => import('./components/modulo-gestao-estrategica/modulo-gestao-estrategica.module')
           .then(m => m.ModuloGestaoEstrategicaModule)
+      },
+      {
+        path: 'modulo-gestao-servicos-logistica/modulo-servico-cliente',
+        loadChildren: () => import('./components/modulo-servico-cliente/modulo-servico-cliente.module')
+          .then(m => m.ModuloServicoClienteModule)
       }
   ]
 }];

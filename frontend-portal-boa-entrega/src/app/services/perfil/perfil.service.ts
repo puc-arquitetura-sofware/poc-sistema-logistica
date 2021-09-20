@@ -16,7 +16,7 @@ export class PerfilService  extends BaseService {
   
   buscarPerfis(): Observable<Array<Perfil>> {
     let response = this.http
-        .get(this.UrlServiceV1 + 'perfil', this.ObterHeaderJson())
+        .get(this.UrlServiceV1 + 'perfil')
         .pipe(
             map(this.extractData),
             catchError(this.serviceError));

@@ -1,0 +1,26 @@
+.container-maps {
+    display: flex;
+    margin-top: 25.9px;
+    flex-direction: column;
+    width: 65%;                                                     
+    margin-right: 25px;
+}
+    .container-maps-one {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    }
+    .maps-text-location {
+    font-family: Roboto-med;
+    font-size: 14px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.29;
+    letter-spacing: normal;
+    text-align: center;
+    color: #b0b0b0;
+    }
+    
+    #map {height: 139px;width: 100%;}
