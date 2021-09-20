@@ -299,7 +299,7 @@ export class EditarComponent extends FormBaseComponent implements OnInit {
     let toast = this.toastr.success('Usuario atualizado com sucesso!', 'Sucesso!');
     if (toast) {
       toast.onHidden.subscribe(() => {
-        this.router.navigate(['/gsl/modulo-gestao-servicos-logistica/modulo-cadastral/clientes/listar-todos']);
+        this.router.navigate(['/gsl/modulo-gestao-servicos-logistica/modulo-servico-cliente/clientes/listar-todos']);
       });
     }
   }

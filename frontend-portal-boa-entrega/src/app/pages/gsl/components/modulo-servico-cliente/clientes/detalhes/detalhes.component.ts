@@ -29,7 +29,9 @@ export class DetalhesComponent {
     private mercadoriaService: MercadoriaService) {
 
       this.cliente = this.route.snapshot.data['cliente'];
+      // this.enderecoMap = this.sanitizer.bypassSecurityTrustResourceUrl("https://www.google.com/maps/embed/v1/place?q=" + this.EnderecoCompleto() + "&key=AIzaSyAP0WKpL7uTRHGKWyakgQXbW6FUhrrA5pE");
       this.enderecoMap = this.sanitizer.bypassSecurityTrustResourceUrl("https://www.google.com/maps/embed/v1/place?q=" + this.EnderecoCompleto() + "&key=AIzaSyAP0WKpL7uTRHGKWyakgQXbW6FUhrrA5pE");
+      
       this.preencherMercadoriasCliente();
   }
 
@@ -44,9 +46,7 @@ export class DetalhesComponent {
       },
       falha => { this.processarFalha(falha) }
       );
-
   }
-
   
   processarFalha(fail: any) {
     this.errors = fail.error.errors;

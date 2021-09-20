@@ -1,0 +1,100 @@
+<div class="container main-container">
+
+    <h1>Lista de Entregas</h1>
+
+   
+    <table class="table table-hover">
+        <thead class="thead-dark">
+            <tr>
+                <th>Nome Cliente</th>
+                <th>Nome Mercadoria</th>
+                <th>Previsão Entrega</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tr *ngFor="let entrega of entregas">
+            <td>
+                {{ entrega.nomeCliente }}
+            </td>
+            <td>
+                {{ entrega.nomeMercadoria }}
+            </td>
+            <td>
+                {{ entrega.previsaoEntrega }}
+            </td>
+           
+            <td class="text-right">
+                <a class="btn btn-success text-white mr-2" href="javascript:void(0)" (click)="abrirModal(rotasEntrega, entrega)"> Rota de Entrega </a>
+            </td>
+        </tr>
+    </table>
+</div>
+
+
+
+<ng-template  #rotasEntrega let-c="close" let-d="dismiss">
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Melhor Rota para entrega</h4>
+        <button type="button" class="close" aria-label="Close" (click)="d('')">
+            <span aria-hidden="true">&times;</span>
+          </button>
+    </div>
+
+    <div class="container main-container">
+        <div class="modal-body">
+            <div>
+                <h4>Informação somente leitura</h4>
+                <hr />
+                <dl class="row">
+                    <dt class="col-sm-3">
+                        <label class="control-label">Cliente</label>
+                    </dt>
+                    <dd class="col-sm-8">
+                        {{ entregaSelecionada.nomeCliente  }}
+                    </dd>
+                </dl>
+                <dl class="row">
+                    <dt class="col-sm-3">
+                        <label class="control-label">Mercadoria</label>
+                    </dt>
+                    <dd class="col-sm-8">
+                        {{ entregaSelecionada.nomeMercadoria  }}
+                    </dd>
+                </dl>
+                <dl class="row">
+                    <dt class="col-sm-3">
+                        <label class="control-label">Previsão</label>
+                    </dt>
+                    <dd class="col-sm-8">
+                        {{ entregaSelecionada.previsaoEntrega  }}
+                    </dd>
+                </dl>
+                <dl class="row">
+                    <dt class="col-sm-3">
+                        <label class="control-label">Origem</label>
+                    </dt>
+                    <dd class="col-sm-8">
+                        {{ entregaSelecionada.enderecoDeposito  }}
+                    </dd>
+                </dl>
+                <dl class="row">
+                    <dt class="col-sm-3">
+                        <label class="control-label">Destino</label>
+                    </dt>
+                    <dd class="col-sm-8">
+                        {{ entregaSelecionada.enderecoCliente  }}
+                    </dd>
+                </dl>
+                <div class="row">
+                    <div class="row">
+                        <br>
+                        <iframe class="vh-100 vw-100" frameborder="0" style="border:0; padding-bottom: 50px;" [src]="enderecoMap" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+       
+    </div>
+
+</ng-template>

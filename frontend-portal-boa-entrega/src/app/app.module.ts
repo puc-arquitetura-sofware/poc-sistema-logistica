@@ -33,7 +33,7 @@ export const httpInterceptorProviders = [
     NgbModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [
     httpInterceptorProviders,
