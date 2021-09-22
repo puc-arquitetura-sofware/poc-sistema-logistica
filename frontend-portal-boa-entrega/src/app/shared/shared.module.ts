@@ -6,7 +6,6 @@ import { NgBrazil } from 'ng-brazil';
 import { TextMaskModule } from 'angular2-text-mask';
 import { GoogleMapsComponent } from './components/google-maps/google-maps.component';
 import { GoogleMapsModule } from '@angular/google-maps';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 let components = [
   ListaMercadoriaComponent,
