@@ -25,6 +25,11 @@ const routes: Routes = [ {
         path: 'modulo-gestao-servicos-logistica/modulo-servico-cliente',
         loadChildren: () => import('./components/modulo-servico-cliente/modulo-servico-cliente.module')
           .then(m => m.ModuloServicoClienteModule)
+      },
+      {
+        path: 'modulo-gestao-servicos-logistica/modulo-ciencia-dados',
+        loadChildren: () => import('./components/modulo-ciencia-dados/modulo-ciencia-dados.module')
+          .then(m => m.ModuloCienciaDadosModule)
       }
   ]
 }];
