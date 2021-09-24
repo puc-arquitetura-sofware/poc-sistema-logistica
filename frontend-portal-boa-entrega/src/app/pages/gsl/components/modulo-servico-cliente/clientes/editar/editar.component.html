@@ -61,7 +61,7 @@
             <div class="form-group">
                 <label class="control-label">Documento</label>
                 <div class="">
-                    <input class="form-control" id="cpfCnpj" type="text" placeholder="{{ textoDocumento }}" formControlName="cpfCnpj" [textMask]="perfilForm().value === idPerfilCliente ? {mask: MASKS.cpf.textMask} : {mask: MASKS.cnpj.textMask}" [ngClass]="{'is-invalid': displayMessage.cpfCnpj }"
+                    <input class="form-control" id="cpfCnpj" type="text" placeholder="{{ textoDocumento }}" formControlName="cpfCnpj" [textMask]="perfilForm().value === idPerfilFornecedor ? {mask: MASKS.cnpj.textMask} : {mask: MASKS.cpf.textMask}" [ngClass]="{'is-invalid': displayMessage.cpfCnpj }"
                     />
     
                     <span class="text-danger" *ngIf="displayMessage.cpfCnpj">

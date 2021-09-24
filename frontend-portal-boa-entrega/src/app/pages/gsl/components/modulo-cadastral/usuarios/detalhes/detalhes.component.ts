@@ -12,8 +12,10 @@ export class DetalhesComponent {
 
   usuario: Usuario;
   enderecoMap;
-  idPerfilCliente = "5fa163ae-dc8a-481e-a829-3ecd0b096121";
-  
+  idPerfilCliente = "6fa163ae-dc8a-481e-a829-3ecd0b096121";
+  idPerfilFornecedor = "6fa163ae-dc8a-481e-a829-3ecd0b096122";
+  perfil:string;
+
   constructor(
     private route: ActivatedRoute,
     private sanitizer: DomSanitizer) {
@@ -24,5 +26,19 @@ export class DetalhesComponent {
 
   public EnderecoCompleto(): string {
     return this.usuario.endereco.logradouro + ", " + this.usuario.endereco.numero + " - " + this.usuario.endereco.bairro + ", " + this.usuario.endereco.cidade + " - " + this.usuario.endereco.estado;
+  }
+
+  public identificarPerfil() {
+    debugger;
+    if(this.usuario.perfil === this.idPerfilFornecedor) {
+      this.perfil = 'Fornecedor';
+
+    } else if(this.usuario.perfil === this.idPerfilCliente) {
+      this.perfil = 'Cliente';
+
+    } else {
+      this.perfil = 'Colaborador';
+    }
+
   }
 }

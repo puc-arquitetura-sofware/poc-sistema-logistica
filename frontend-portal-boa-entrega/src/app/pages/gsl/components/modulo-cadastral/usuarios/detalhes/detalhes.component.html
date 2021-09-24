@@ -16,14 +16,14 @@
                 <label class="control-label">Documento</label>
         </dt>
         <dd class="col-sm-10">
-            {{usuario.perfil === idPerfilCliente ? (usuario.cpfCnpj | cpf) : (usuario.cpfCnpj | cnpj ) }}
+            {{usuario.perfil === idPerfilFornecedor ? (usuario.cpfCnpj | cnpj) : (usuario.cpfCnpj | cpf ) }}
         </dd>
 
         <dt class="col-sm-2">
             <label class="control-label">Perfil</label>
         </dt>
         <dd class="col-sm-10">
-            {{usuario.perfil === idPerfilCliente ? 'Cliente' : 'Fornecedor' }}
+            {{ perfil }}
         </dd>
 
         <dt class="col-sm-2">

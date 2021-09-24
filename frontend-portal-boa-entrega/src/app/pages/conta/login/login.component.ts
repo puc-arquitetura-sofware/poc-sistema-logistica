@@ -66,7 +66,7 @@ export class LoginComponent  extends FormBaseComponent implements OnInit {
       this.contaService.login(this.usuario)
       .subscribe(
           sucesso => {
-      var response = {
+            var response = {
               userToken: sucesso,
               accessToken: "algumTokenAleatórioPorAqui"
             };
@@ -74,7 +74,9 @@ export class LoginComponent  extends FormBaseComponent implements OnInit {
             this.processarSucesso(response)
           
           },
-          falha => {this.processarFalha(falha)}
+          falha => {
+            this.processarFalha(falha)
+          }
       );
     }
   }
@@ -96,7 +98,10 @@ export class LoginComponent  extends FormBaseComponent implements OnInit {
   }
 
   processarFalha(fail: any){
-    this.errors = fail.error.errors;
+    debugger;
+    console.log('falhar', fail);
+    
+    this.errors = fail.error.errors.Mensagens;
     this.toastr.error('Ocorreu um erro!', 'Opa :(');
   }
 

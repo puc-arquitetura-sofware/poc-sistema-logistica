@@ -16,7 +16,9 @@ export class ExcluirComponent {
   enderecoMap;
   errors: any[] = [];
 
-  idPerfilCliente = "5fa163ae-dc8a-481e-a829-3ecd0b096121";
+  idPerfilCliente = "6fa163ae-dc8a-481e-a829-3ecd0b096121";
+  idPerfilFornecedor = "6fa163ae-dc8a-481e-a829-3ecd0b096122";
+  perfil : string;
   
   constructor(
     private usuarioService: UsuarioService,
@@ -26,6 +28,7 @@ export class ExcluirComponent {
     private sanitizer: DomSanitizer) {
 
     this.usuario = this.route.snapshot.data['usuario'];
+    this.identificarPerfil()
     this.enderecoMap = this.sanitizer.bypassSecurityTrustResourceUrl("https://www.google.com/maps/embed/v1/place?q=" + this.EnderecoCompleto() + "&key=AIzaSyAP0WKpL7uTRHGKWyakgQXbW6FUhrrA5pE");
   }
 
@@ -39,6 +42,19 @@ export class ExcluirComponent {
         usuario => { this.sucessoExclusao(usuario) },
         error => { this.falha(error) }
       );
+  }
+
+  public identificarPerfil() {
+    if(this.usuario.perfil === this.idPerfilFornecedor) {
+      this.perfil = 'Fornecedor';
+
+    } else if(this.usuario.perfil === this.idPerfilCliente) {
+      this.perfil = 'Cliente';
+
+    } else {
+      this.perfil = 'Colaborador';
+    }
+
   }
 
   sucessoExclusao(evento: any) {
