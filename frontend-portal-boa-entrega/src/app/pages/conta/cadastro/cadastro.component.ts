@@ -219,7 +219,7 @@ export class CadastroComponent extends FormBaseComponent implements OnInit, Afte
   }
 
   processarFalha(fail: any) {
-    this.errors = fail.error.errors;
+    this.errors = fail.error.errors.Mensagens;
     this.toastr.error('Ocorreu um erro!', 'Opa :(');
   }
 

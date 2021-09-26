@@ -18,10 +18,10 @@
                 {{ usuario.nome }}
             </td>
             <td>
-                {{usuario.perfil === idPerfilCliente ? (usuario.cpfCnpj | cpf) : (usuario.cpfCnpj | cnpj ) }}
+                {{usuario.perfil === idPerfilFornecedor ? (usuario.cpfCnpj | cnpj) : (usuario.cpfCnpj | cpf ) }}
             </td>
             <td>
-                {{usuario.perfil === idPerfilCliente ? 'Cliente' : 'Fornecedor' }}
+                {{ identificarPerfil(usuario.perfil) }}
             </td>
             <td>
                 <input [checked]="usuario.ativo" class="check-box" disabled="disabled" type="checkbox">

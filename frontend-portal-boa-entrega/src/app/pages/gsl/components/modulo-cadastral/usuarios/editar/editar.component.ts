@@ -36,7 +36,7 @@ export class EditarComponent extends FormBaseComponent implements OnInit {
 
   MASKS = utilsBr.MASKS;
   tipoFornecedor: number;
-  idPerfilCliente = "5fa163ae-dc8a-481e-a829-3ecd0b096121";
+  idPerfilFornecedor = "6fa163ae-dc8a-481e-a829-3ecd0b096122";
   perfis: Array<Perfil>;
   
   constructor(private fb: FormBuilder,
@@ -99,6 +99,7 @@ export class EditarComponent extends FormBaseComponent implements OnInit {
 
 
     super.configurarMensagensValidacaoBase(this.validationMessages);
+
     this.usuario = this.route.snapshot.data['usuario'];
   }
 
@@ -134,6 +135,7 @@ export class EditarComponent extends FormBaseComponent implements OnInit {
       estado: ['', [Validators.required]],
       fornecedorId: ''
     });
+    debugger;
 
     this.preencherPerfis();
     this.preencherForm();
@@ -141,7 +143,7 @@ export class EditarComponent extends FormBaseComponent implements OnInit {
   }
 
   preencherForm() {
-
+    
     this.usuarioForm.patchValue({
       id: this.usuario.id,
       nome: this.usuario.nome,
@@ -150,13 +152,13 @@ export class EditarComponent extends FormBaseComponent implements OnInit {
       ativo: this.usuario.ativo,
       cpfCnpj: this.usuario.cpfCnpj
     });
-
     
-    if (this.perfilForm().value === this.idPerfilCliente) {
-      this.documento().setValidators([Validators.required, NgBrazilValidators.cpf]);
+    
+    if (this.perfilForm().value === this.idPerfilFornecedor) {
+      this.documento().setValidators([Validators.required, NgBrazilValidators.cnpj]);
     }
     else {
-      this.documento().setValidators([Validators.required, NgBrazilValidators.cnpj]);
+      this.documento().setValidators([Validators.required, NgBrazilValidators.cpf]);
     }
 
     this.enderecoForm.patchValue({
@@ -183,15 +185,15 @@ export class EditarComponent extends FormBaseComponent implements OnInit {
 
   trocarValidacaoDocumento() {
 
-    if (this.perfilForm().value === this.idPerfilCliente) {
+    if (this.perfilForm().value === this.idPerfilFornecedor) {
+      this.documento().clearValidators();
+      this.documento().setValidators([Validators.required, NgBrazilValidators.cnpj]);
+      this.textoDocumento = "CNPJ (requerido)";
+    }
+    else {
       this.documento().clearValidators();
       this.documento().setValidators([Validators.required, NgBrazilValidators.cpf]);
       this.textoDocumento = "CPF (requerido)";
-    }
-    else {
-    this.documento().clearValidators();
-      this.documento().setValidators([Validators.required, NgBrazilValidators.cnpj]);
-      this.textoDocumento = "CNPJ (requerido)";
     }
 
   }

@@ -17,10 +17,12 @@ export class DetalhesComponent {
 
   cliente: Usuario;
   enderecoMap;
-  idPerfilCliente = "5fa163ae-dc8a-481e-a829-3ecd0b096121";
+  idPerfilCliente = "6fa163ae-dc8a-481e-a829-3ecd0b096121";
+  idPerfilFornecedor = "6fa163ae-dc8a-481e-a829-3ecd0b096122";
   mercadoriasCliente: Mercadoria[] = []
   mercadoriaCliente: MercadoriaCliente;
   errors: any[] = [];
+  perfil:string;
   
   constructor(
     private route: ActivatedRoute,
@@ -39,6 +41,20 @@ export class DetalhesComponent {
     return this.cliente.endereco.logradouro + ", " + this.cliente.endereco.numero + " - " + this.cliente.endereco.bairro + ", " + this.cliente.endereco.cidade + " - " + this.cliente.endereco.estado;
   }
 
+  
+  public identificarPerfil() {
+    debugger;
+    if(this.cliente.perfil === this.idPerfilFornecedor) {
+      this.perfil = 'Fornecedor';
+
+    } else if(this.cliente.perfil === this.idPerfilCliente) {
+      this.perfil = 'Cliente';
+
+    } else {
+      this.perfil = 'Colaborador';
+    }
+
+  }
   preencherMercadoriasCliente() {
     this.mercadoriaService.obterPorCliente(this.cliente.id).subscribe( 
       mercadoria => {
