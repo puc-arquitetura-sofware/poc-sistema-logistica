@@ -3,23 +3,23 @@ import { AbstractControl, FormBuilder, FormControl, FormControlName, FormGroup, 
 import { ActivatedRoute, Router } from '@angular/router';
 import { CustomValidators } from 'ngx-custom-validators';
 import { FormBaseComponent } from 'src/app/shared/base-components/form-base.component';
-import { Usuario } from '../../models/usuario';
-import { ContaService } from '../services/conta.service';
 import { StringUtils } from 'src/app/shared/utils/string-utils';
-import { CepConsulta } from '../../models/endereco';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { NgBrazilValidators } from 'ng-brazil';
 import { ToastrService } from 'ngx-toastr';
 import { utilsBr } from 'js-brasil';
 import { PerfilService } from 'src/app/services/perfil/perfil.service';
 import { Perfil } from 'src/app/models/Perfil';
+import { Usuario } from 'src/app/pages/models/usuario';
+import { ContaService } from 'src/app/pages/conta/services/conta.service';
+import { CepConsulta } from 'src/app/pages/models/endereco';
 
 @Component({
-  selector: 'app-cadastro',
-  templateUrl: './cadastro.component.html',
-  styleUrls: ['./cadastro.component.css']
+  selector: 'app-novo',
+  templateUrl: './novo.component.html',
+  styleUrls: ['./novo.component.css']
 })
-export class CadastroComponent extends FormBaseComponent implements OnInit, AfterViewInit {
+export class NovoComponent extends FormBaseComponent implements OnInit, AfterViewInit {
 
 
   @ViewChildren(FormControlName, { read: ElementRef }) formInputElements: ElementRef[];
@@ -211,11 +211,11 @@ export class CadastroComponent extends FormBaseComponent implements OnInit, Afte
 
     this.contaService.LocalStorage.salvarDadosLocaisUsuario(response);
 
-    let toast = this.toastr.success('Registro realizado com Sucesso!', 'Bem vindo!!!');
+    let toast = this.toastr.success('Registro realizado com Sucesso!', 'Criar usuário!');
     if (toast) {
       toast.onHidden.subscribe(() => {
-        this.router.navigate(['/home']);
-      });
+        this.router.navigate(['/gsl/modulo-gestao-servicos-logistica/modulo-cadastral/usuarios/listar-todos']);
+        });
     }
   }
 

@@ -81,6 +81,7 @@
             <div class="col-md-10">
                 <input class="form-control" id="cpfCnpj" type="text" placeholder="{{ textoDocumento }}" formControlName="cpfCnpj" [textMask]="perfilForm().value === idPerfilFornecedor ? {mask: MASKS.cnpj.textMask} : {mask: MASKS.cpf.textMask}" [ngClass]="{'is-invalid': displayMessage.cpfCnpj }"
                 />
+
                 <span class="text-danger" *ngIf="displayMessage.cpfCnpj">
                     <p [innerHTML]="displayMessage.cpfCnpj"></p>
                 </span>
@@ -200,13 +201,5 @@
             </div>
         </div>
 
-        <!-- <div class="form-group">
-            <div class="col-md-4 col-md-offset-2">
-                <p>Formulario valido: {{ cadastroForm.valid }}</p>
-                <p>Formulario Tocado: {{ cadastroForm.touched }}</p>
-                <p>Formulario Sujo: {{ cadastroForm.dirty }}</p><br>
-                <p>Formulario: {{ formResult }}</p>
-            </div>
-        </div> -->
     </form>
 </div>

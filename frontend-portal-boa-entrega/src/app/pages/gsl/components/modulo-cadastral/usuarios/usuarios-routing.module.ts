@@ -4,6 +4,7 @@ import { DetalhesComponent } from './detalhes/detalhes.component';
 import { EditarComponent } from './editar/editar.component';
 import { ExcluirComponent } from './excluir/excluir.component';
 import { ListaComponent } from './lista/lista.component';
+import { NovoComponent } from './novo/novo.component';
 import { UsuarioGuard } from './services/usuario.guard';
 import { UsuarioResolve } from './services/usuario.resolve';
 import { UsuarioAppComponent } from './usuario.app.component';
@@ -35,6 +36,11 @@ const routes: Routes = [
             usuario: UsuarioResolve
           }
       },
+      {
+          path: 'adicionar-novo', component: NovoComponent,
+          canActivate: [UsuarioGuard],
+          // data: [{ claim: { nome: 'Mercadoria', valor: 'Excluir' } }],
+      }
   ]
 }
 ];

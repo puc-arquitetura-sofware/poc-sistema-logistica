@@ -13,12 +13,14 @@ import { ListaComponent } from './lista/lista.component';
 import { DetalhesComponent } from './detalhes/detalhes.component';
 import { EditarComponent } from './editar/editar.component';
 import { ExcluirComponent } from './excluir/excluir.component';
+import { NovoComponent } from './novo/novo.component';
 
 
 @NgModule({
   declarations: [
     UsuarioAppComponent, 
     ListaComponent, 
+    NovoComponent,
     DetalhesComponent, 
     EditarComponent, 
     ExcluirComponent],
