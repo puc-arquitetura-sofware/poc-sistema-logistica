@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { CanDeactivate, Router, CanActivate, ActivatedRouteSnapshot } from '@angular/router';
+import { CanDeactivate, Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 
 import { NovoComponent } from '../novo/novo.component';
 import { BaseGuard } from 'src/app/services/base.guard';
@@ -16,7 +16,7 @@ export class MercadoriaGuard extends BaseGuard implements CanActivate, CanDeacti
         return true
     }
 
-    canActivate(routeAc: ActivatedRouteSnapshot) {
-        return super.validarClaims(routeAc);
-    }    
+    canActivate(routeAc: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
+        return super.validarClaims(routeAc, state);
+    }   
 }

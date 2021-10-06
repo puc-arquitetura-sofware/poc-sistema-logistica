@@ -41,8 +41,7 @@ export class LoginComponent  extends FormBaseComponent implements OnInit {
         rangeLength: 'A senha deve possuir entre 6 e 15 caracteres'
       }
     };
-
-    this.returnUrl = this.route.snapshot.queryParams['returnUrl'];
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/home';
 
     super.configurarMensagensValidacaoBase(this.validationMessages);    
   }
@@ -90,9 +89,8 @@ export class LoginComponent  extends FormBaseComponent implements OnInit {
     let toast = this.toastr.success('Login realizado com Sucesso!', 'Bem vindo!!!');
     if(toast){
       toast.onHidden.subscribe(() => {
-        this.returnUrl
-        ? this.router.navigate([this.returnUrl])
-        : this.router.navigate(['/home']);
+        this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/home';
+        this.router.navigate([this.returnUrl]);
       });
     }
   }

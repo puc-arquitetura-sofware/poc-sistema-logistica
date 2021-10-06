@@ -1,4 +1,4 @@
-import { Router, ActivatedRouteSnapshot } from '@angular/router';
+import { Router, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 import { LocalStorageUtils } from '../shared/utils/localstorage';
 
 export abstract class BaseGuard {
@@ -7,10 +7,13 @@ export abstract class BaseGuard {
 
     constructor(protected router: Router){}
     
-    protected validarClaims(routeAc: ActivatedRouteSnapshot) : boolean {
+    protected validarClaims(routeAc: ActivatedRouteSnapshot, state: RouterStateSnapshot) : boolean {
 
         if(!this.localStorageUtils.obterTokenUsuario()){
-            this.router.navigate(['/conta/login/'], { queryParams: { returnUrl: this.router.url }});
+            debugger;
+            //this.router.url
+            this.router.navigate(['/conta/login/'], { queryParams: { returnUrl:  state.url }});
+            return false;
         }  
 
         let user = this.localStorageUtils.obterUsuario();
