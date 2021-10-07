@@ -2,7 +2,7 @@
     <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow">
         <div class="container">
 
-            <a class="navbar-brand" [routerLink]="['/home']">Portal Boa Entrega</a>
+            <a class="navbar-brand" (click)="setIndex(0)" [routerLink]="['/home']">Portal Boa Entrega</a>
             <button class="navbar-toggler" type="button" (click)="isCollapsed = !isCollapsed" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
