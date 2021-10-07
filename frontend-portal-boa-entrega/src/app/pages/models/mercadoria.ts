@@ -7,6 +7,7 @@ export interface Mercadoria {
   valor: number,
   criadoEm: string,
   ativo: true,
+  quantidadeEstoque?: number
   // fornecedorId: string,
   // nomeFornecedor: string
 }

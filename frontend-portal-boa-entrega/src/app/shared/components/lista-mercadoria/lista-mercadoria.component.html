@@ -27,6 +27,9 @@
                 Descrição
             </th>
             <th>
+                Quantidade
+            </th>
+            <th>
                 Ativo?
             </th>
             <th></th>
@@ -48,6 +51,9 @@
             </td>
             <td>
                 {{ mercadoria.descricao }}
+            </td>
+            <td>
+                {{ mercadoria.quantidadeEstoque }}
             </td>
             <td>
                 <input [checked]="mercadoria.ativo" class="check-box" disabled="disabled" type="checkbox">
