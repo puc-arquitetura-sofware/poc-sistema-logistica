@@ -244,7 +244,8 @@ export class EditarComponent extends FormBaseComponent implements OnInit {
           var mercadorias = this.mercadoriaService.obterTodos().subscribe(
             mercadorias => {
               debugger;
-              this.mercadoriasDeposito = mercadorias;
+              this.toastr.success('Mercadoria vinculada com sucesso!', 'Sucesso!');
+              this.preencherMercadoriasDeposito();
             },
             erro => this.processarFalhaVinculo(erro)
           )
