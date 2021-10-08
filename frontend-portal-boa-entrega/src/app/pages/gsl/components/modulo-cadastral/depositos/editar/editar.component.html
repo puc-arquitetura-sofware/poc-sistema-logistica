@@ -249,8 +249,18 @@
               </button>
         </div>
 
-        <form   [formGroup]="vinculoForm" (ngSubmit)="vincularMercadoriaDeposito()">
+        <form    [formGroup]="vinculoForm" (ngSubmit)="vincularMercadoriaDeposito()">
             <div class="modal-body">
+
+                <div *ngIf="!mercadorias.length > 0">
+                    <div class="alert alert-warning" >
+                        <h3 id="msgRetorno">Mercadorias</h3>
+                        <ul>
+                            <li>Todas as Mercadorias disponíveis já estão vinculadas neste Depósito</li>
+                        </ul>
+                    </div>
+                    
+                </div>
 
                 <div class="alert alert-danger" *ngIf="errorsVinculo.length > 0">
                     <h3 id="msgRetorno">Opa! Alguma coisa não deu certo:</h3>
@@ -258,8 +268,8 @@
                         <li *ngFor="let error of errorsVinculo">{{ error }}</li>
                     </ul>
                 </div>
-
-                <div class="form-group">
+                
+                <div *ngIf="mercadorias.length > 0" class="form-group">
                     <label class="control-label">Mercadorias</label>
                     <div>
                         <select 
@@ -275,7 +285,7 @@
                         </span>
                     </div>
                 </div>
-                <div class="form-group">
+                <div *ngIf="mercadorias.length > 0" class="form-group">
                     <label class="control-label">Quantidade</label>
                     <div class="">
                         <input class="form-control" id="quantidade" type="text" placeholder="Número (requerido)" formControlName="quantidade" [ngClass]="{ 'is-invalid': displayMessage.quantidade }" />
@@ -286,10 +296,11 @@
                 </div>
             </div>
 
-            <div class="modal-footer">
+            <div *ngIf="mercadorias.length > 0" class="modal-footer">
                 <input type="submit" value="Vincular" class="btn btn-success text-white">
             </div>
         </form>
+     
 
     </ng-template>
 

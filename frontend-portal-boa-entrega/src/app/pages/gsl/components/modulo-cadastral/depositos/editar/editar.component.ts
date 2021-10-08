@@ -13,6 +13,7 @@ import { StringUtils } from 'src/app/shared/utils/string-utils';
 import { MercadoriaService } from '../../../../services/mercadoria.service';
 import { Mercadoria } from 'src/app/pages/models/mercadoria';
 import { MercadoriaDeposito } from 'src/app/pages/models/mercadoriaDeposito';
+import { forkJoin } from 'rxjs';
 
 @Component({
   selector: 'app-editar',
@@ -85,10 +86,22 @@ export class EditarComponent extends FormBaseComponent implements OnInit {
 
     super.configurarMensagensValidacaoBase(this.validationMessages);
     this.deposito = this.route.snapshot.data['deposito'];
-    this.preencherMercadorias();
-    this.preencherMercadoriasDeposito();
+    
+    forkJoin([
+      this.mercadoriaService.obterTodos(),
+      this.mercadoriaService.obterPorDeposito(this.deposito.id)
+      ]).subscribe( 
+        results => {
+          debugger;
+          this.mercadorias = results[0];
+          this.mercadoriasDeposito = results[1];  
+          this.mercadorias = this.difference(results[0], results[1]);
+        },
+        falha => { this.processarFalha(falha) }
+      );
   }
 
+  
   ngOnInit() {
 
 
@@ -174,9 +187,26 @@ export class EditarComponent extends FormBaseComponent implements OnInit {
     this.mercadoriaService.obterTodos().subscribe( 
       mercadoria => {
         this.mercadorias = mercadoria;
+        debugger;
       },
       falha => { this.processarFalha(falha) }
       );
+  }
+
+  private difference(a1: any, a2: any) {
+    var result = [];
+    for(var i=0; i < a1.length; i++) { 
+      var current = a1[i];
+   
+       var filtered = a2.filter(a => a.id == current.id);
+   
+       if(!filtered.length) {
+         console.log(current);
+        result.push(current);
+       }
+    }
+   
+    return result;
   }
 
   preencherMercadoriasDeposito() {
@@ -245,7 +275,7 @@ export class EditarComponent extends FormBaseComponent implements OnInit {
             mercadorias => {
               debugger;
               this.toastr.success('Mercadoria vinculada com sucesso!', 'Sucesso!');
-              this.preencherMercadoriasDeposito();
+              document.location.reload();
             },
             erro => this.processarFalhaVinculo(erro)
           )
